@@ -1,0 +1,1910 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+	<meta charset="utf-8" />
+	<meta name="robots" content="noindex">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+	<title>bDriverMX-Camera</title>
+	<meta name="description" content="bDriverMXのWebApp版 Android,Windows,Macに対応" />
+	<link rel="icon" href="image/icon16.png" sizes="16x16" type="image/png" />
+	<link rel="icon" href="image/icon32.png" sizes="32x32" type="image/png" />
+	<link rel="icon" href="image/icon48.png" sizes="48x48" type="image/png" />
+	<link rel="icon" href="image/icon64.png" sizes="64x64" type="image/png" />
+	<link rel="apple-touch-icon-precomposed" href="image/icon150.png" />
+	<meta name="msapplication-TileImage" content="image/icon150.png" />
+	<meta name="msapplication-TileColor" content="#ff0000" />
+	<link rel="stylesheet" href="data/style.css?ver=2" />
+	<script type="text/javascript" src="data/bluejelly.js"></script>
+</head>
+
+<body>
+	<div id='LoadingLayer'>
+		<div class='center'>
+			<div id='loadingimage'>
+				<img src="image/Loading.png" width="250px" id="LoadingImageSource">
+			</div>
+			<div id='loadingText'></div>
+		</div>
+	</div>
+	<div id='NoSupportLayer'>
+		<div class="center" id='NoSupportContent'>
+			<div id='SupportList'>
+				<table align="center">
+					<tr>
+						<td colspan="2" class='errorTop'><img src="image/Error.png" width="250px"></td>
+					</tr>
+					<tr>
+						<td colspan="2" class='errorTop'>ご利用のブラウザには対応しておりません<br>以下のサポートリストをご確認ください</td>
+					</tr>
+					<tr>
+						<th colspan="2">サポートリスト</th>
+					</tr>
+					<tr class='top' class='underline'>
+						<td>OS</td>
+						<td>ブラウザ</td>
+					</tr>
+					<tr class='underline'>
+						<td rowspan="2" class='OS'>ios</td>
+						<td><a href='https://apps.apple.com/us/app/bluefy-web-ble-browser/id1492822055'>Bluefy</a></td>
+					</tr>
+					<tr>
+						<td><a href='https://apps.apple.com/us/app/plen/id1561905612'>公式アプリ</a></td>
+					</tr>
+					<tr class='underline'>
+						<td rowspan="3" class='OS'>Android</td>
+						<td><a href="https://play.google.com/store/apps/details?id=com.android.chrome">Chrome</a></td>
+					</tr>
+					<tr>
+						<td><a href="https://play.google.com/store/apps/details?id=com.opera.browser">Opera</a></td>
+					</tr>
+					<tr>
+						<td><a href="https://play.google.com/store/apps/details?id=com.sec.android.app.sbrowser">Samsung Internet Browser</a></td>
+					</tr>
+					<tr class='underline'>
+						<td rowspan="1" class='OS'>Windows</td>
+						<td><a href="https://www.google.com/intl/ja_jp/chrome/">Chrome</a></td>
+					</tr>
+					<tr class='underline'>
+						<td rowspan="1" class='OS'>Mac</td>
+						<td><a href="https://www.google.com/intl/ja_jp/chrome/">Chrome</a></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+	</div>
+	<div id='TitleLayer'>
+		<div id='Cbutton5'><a href="command-standalone.html" id="ModeChangeButton"><img src="image/Command.png" alt="コマンド操作"></a></div>
+		<div class="Guide" id='Guide1'></div>
+		<div class='center'>
+			<div id='TitleLogo'>
+				<img src='image/TitleLogo.png'>
+			</div>
+			<div id='Varsion'>β.1.1.1 - Camera Controle</div>
+			<div id='TitleButton'>
+				<input type="image" id='StartButton' src='image/StartButton.png'>
+				<div id='status'></div>
+			</div>
+		</div>
+	</div>
+	<div id='FullscreenArea'>
+		<div id='ControllerLayer'>
+			<div id='ControllTop'>
+				<div class='Left'>
+					<input type="image" class='TopButton' id='Cbutton1' src='image/Setting.png'>
+				</div>
+				<div class='Center'>
+					<div id='Volt'>
+
+					</div>
+				</div>
+				<div class='Right'>
+					<input type="image" class='TopButton' id='Cbutton2' src='image/LightOn.png'><input type="image" class='TopButton' id='Cbutton3' src='image/GyroOn.png'><input type="image" class='TopButton' id='Cbutton4' src='image/FullscreenOn.png'>
+				</div>
+			</div>
+			<div id='Controller'>
+				<div id='CameraViewer'>
+					<div id='CameraViewerSource'></div>
+					<button type="button" id='CVbutton1'>再接続</button>
+				</div>
+				<div id='Slider'>
+					<div id='HorizontalSlider'>
+						<input type="range" id='Hslider' min='0' max='200' value='100'></imput>
+					</div>
+					<div id='VerticalSlider'>
+						<input type="range" id='Vslider' min='0' max='200' value='100'></imput>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id='SettingLayer'>
+			<div class="Guide" id='Guide2'></div>
+			<div id='SettingList'>
+				<table align="center" id="SettingTable">
+					<tr class='row1'>
+						<td id='SettingTitle' colspan="4">設定</td>
+					</tr>
+					<tr class='row4'>
+						<td colspan="4">カメラ設定</td>
+					</tr>
+					<tr>
+						<td class='col1'>カメラIP</td>
+						<td class='col3' colspan="3"><input type="text" id='CameraIPinput' class='SettingText' value='192.168.0.0' placeholder="192.168.0.0"></td>
+					</tr>
+					<tr>
+						<td class='col1'>ビュワーサイズ</td>
+						<td class='col2' id='Svalue11'>100%</td>
+						<td class='col3' colspan="2"><input type="range" id='Sslider11' class='SettingSlider' min='50' max='200' value='100'></td>
+					</tr>
+					<tr>
+						<td class='col1'>ビュワー位置</td>
+						<td class='col2' id='Svalue12'>0</td>
+						<td class='col3' colspan="2"><input type="range" id='Sslider12' class='SettingSlider' min='-1' max='1' value='0'></td>
+					</tr>
+					<tr>
+						<td class='col1'>ビュワー反転</td>
+						<td class='col2' id='Svalue13'>1</td>
+						<td class='col3' colspan="2"><input type="range" id='Sslider13' class='SettingSlider' min='1' max='4' value='1'></td>
+					</tr>
+					<tr class='row2'>
+						<td colspan="4">前後レバー</td>
+					</tr>
+					<tr>
+						<td class='col1'>感度</td>
+						<td class='col2' id='Svalue1'>50%</td>
+						<td class='col3' colspan="2"><input type="range" id='Sslider1' class='SettingSlider' min='20' max='100' value='60'></td>
+					</tr>
+					<tr class='row2'>
+						<td colspan="4">左右レバー</td>
+					</tr>
+					<tr>
+						<td class='col1'>感度</td>
+						<td class='col2' id='Svalue2'>100%</td>
+						<td class='col3' colspan="2"><input type="range" id='Sslider2' class='SettingSlider' min='20' max='100' value='100'></td>
+					</tr>
+					<tr>
+						<td class='col1'>初期位置調整</td>
+						<td class='col2' id='Svalue3'>0</td>
+						<td class='col3' colspan="2"><input type="range" id='Sslider3' class='SettingSlider' min='-30' max='30' value='0'></td>
+					</tr>
+					<tr>
+						<td class='col1'>反転</td>
+						<td class='col2' id='Svalue10'>OFF</td>
+						<td class='col4'><input type="range" id='Sslider10' class='SettingSlider' min='0' max='1' value='0'></td>
+						<td></td>
+					</tr>
+					<tr class='row2'>
+						<td colspan="4">全体設定</td>
+					</tr>
+					<tr id='GyroSetting'>
+						<td class='col1'>ジャイロ感度</td>
+						<td class='col2' id='Svalue5'>50%</td>
+						<td class='col3' colspan="2"><input type="range" id='Sslider5' class='SettingSlider' min='0' max='100' value='50'></td>
+					</tr>
+					<tr id='KeySetting'>
+						<td class='col1'>キー割り当て</td>
+						<td class='col3' colspan="3">
+							<div class='keySet' id='keySet1'>前 / ↑</div>
+							<div class='keySet' id='keySet2'>後 / ↓</div>
+							<div class='keySet' id='keySet3'>左 / ←</div>
+							<div class='keySet' id='keySet4'>右 / →</div>
+							<div class='keySet' id='keySet5'>停止 / Space</div>
+						</td>
+					</tr>
+					<tr>
+						<td class='col1'>レバーサイズ</td>
+						<td class='col2' id='Svalue6'>100%</td>
+						<td class='col3' colspan="2"><input type="range" id='Sslider6' class='SettingSlider' min='0' max='200' value='100'></td>
+					</tr>
+					<tr>
+						<td class='col1'>レバー位置(上下)</td>
+						<td class='col2' id='Svalue7'>0</td>
+						<td class='col3' colspan="2"><input type="range" id='Sslider7' class='SettingSlider' min='-20' max='20' value='0'></td>
+					</tr>
+					<tr>
+						<td class='col1'>レバー位置(左右)</td>
+						<td class='col2' id='Svalue9'>0</td>
+						<td class='col3' colspan="2"><input type="range" id='Sslider9' class='SettingSlider' min='-20' max='20' value='0'></td>
+					</tr>
+					<tr>
+						<td class='col1'>左右反転</td>
+						<td class='col2' id='Svalue8'>OFF</td>
+						<td class='col4'><input type="range" id='Sslider8' class='SettingSlider' min='0' max='1' value='0'></td>
+						<td></td>
+					</tr>
+					<tr class='row3'>
+						<td colspan="4" class='col5'><input type='image' src='image/Enter.png' id='Sbutton1'></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+	</div>
+</body>
+
+<script defer>
+	//変数の定義
+	const Lloading = document.getElementById('LoadingLayer');
+	const LNoSupport = document.getElementById('NoSupportLayer');
+	const LNoSupportContent = document.getElementById('NoSupportContent');
+	const LTitle = document.getElementById('TitleLayer');
+	const Lcontroller = document.getElementById('ControllerLayer');
+	const LoadingStatus = document.getElementById('loadingText');
+	const Lsetting = document.getElementById('SettingLayer');
+	const ble = new BlueJelly();
+	const StartButton = document.getElementById('StartButton');
+	const Status = document.getElementById('status');
+	const Slider = document.getElementById('Slider');
+	const HSliderBox = document.getElementById('HorizontalSlider');
+	const VSliderBox = document.getElementById('VerticalSlider');
+	const HSlider = document.getElementById('Hslider');
+	const VSlider = document.getElementById('Vslider');
+	const CameraViewer = document.getElementById('CameraViewer');
+	const CameraViewerSource = document.getElementById('CameraViewerSource');
+	const LoadingImageSource = document.getElementById('LoadingImageSource');
+	const ModeChangeButton = document.getElementById('ModeChangeButton');
+	const CVButton1 = document.getElementById('CVbutton1');
+	const CButton1 = document.getElementById('Cbutton1');
+	const CButton2 = document.getElementById('Cbutton2');
+	const CButton3 = document.getElementById('Cbutton3');
+	const CButton4 = document.getElementById('Cbutton4');
+	const CButton5 = document.getElementById('Cbutton5');
+	const SSlider1 = document.getElementById('Sslider1');
+	const SSlider2 = document.getElementById('Sslider2');
+	const SSlider3 = document.getElementById('Sslider3');
+	const SSlider5 = document.getElementById('Sslider5');
+	const SSlider6 = document.getElementById('Sslider6');
+	const SSlider7 = document.getElementById('Sslider7');
+	const SSlider8 = document.getElementById('Sslider8');
+	const SSlider9 = document.getElementById('Sslider9');
+	const SSlider10 = document.getElementById('Sslider10');
+	const SSlider11 = document.getElementById('Sslider11');
+	const SSlider12 = document.getElementById('Sslider12');
+	const SSlider13 = document.getElementById('Sslider13');
+	const SButton1 = document.getElementById('Sbutton1');
+	const SValue1 = document.getElementById('Svalue1');
+	const SValue2 = document.getElementById('Svalue2');
+	const SValue3 = document.getElementById('Svalue3');
+	const SValue4 = document.getElementById('Svalue4');
+	const SValue5 = document.getElementById('Svalue5');
+	const SValue6 = document.getElementById('Svalue6');
+	const SValue7 = document.getElementById('Svalue7');
+	const SValue8 = document.getElementById('Svalue8');
+	const SValue9 = document.getElementById('Svalue9');
+	const SValue10 = document.getElementById('Svalue10');
+	const SValue11 = document.getElementById('Svalue11');
+	const SValue12 = document.getElementById('Svalue12');
+	const SValue13 = document.getElementById('Svalue13');
+	const SkeySet1 = document.getElementById('keySet1');
+	const SkeySet2 = document.getElementById('keySet2');
+	const SkeySet3 = document.getElementById('keySet3');
+	const SkeySet4 = document.getElementById('keySet4');
+	const SkeySet5 = document.getElementById('keySet5');
+	const CameraIPinput = document.getElementById('CameraIPinput');
+	const GuideButton = document.getElementById('Guide1');
+	const SettingGuideButton = document.getElementById('Guide2');
+
+	var userAgent = window.navigator.userAgent.toLowerCase();
+	var Support = false;
+	var Device;
+	var Browser;
+	var stage = 0;
+	var ReconnectCount = 0;
+	var LoadingSpeed = 0.5;
+	var LoadingAction;
+	var Fullscreen = false;
+
+	var PWMRange = 80;
+	var PWMMin = 20;
+	var ServoMaxBase = 255;
+	var ServoMax = 255;
+	var ServoRange = 80;
+	var ServoAdj = 0;
+
+	var SendTime = 100;
+
+	var PWMValue = 127;
+	var ServoValue = 127;
+	var PortValue = 0;
+
+	var RotateMaxBase = 40;
+	var RotateMax = 40;
+	var RotateMin = 0;
+	var Rotate = true;
+	var RotateSet = 0;
+	var RotateBefore = false;
+
+	var LightActive = false;
+	var GyroActive = false;
+
+	var KeyBoard = false;
+	var Key = [];
+	var KeyValue = [];
+	var StopFlag = false;
+	var FrontKeyPressFlag = false;
+	var FrontKeyPressRepeat;
+	var BackKeyPressFlag = false;
+	var BackKeyPressRepeat;
+	var BrakeKeyPressFlag = false;
+	var NowSpeed = 100;
+	var RightKeyPressFlag = false;
+	var LeftKeyPressFlag = false;
+
+	//個人設定
+	var Setting = [];
+	var SettingString = [];
+	var SettingNow = false;
+	var FirstTime = 'false';
+
+
+	//画像ドラッグ対策
+	document.ondragstart = function() {
+		return false;
+	};
+
+	//画面外はみ出し確認
+	function DisplayOut() {
+		Rotate = true;
+		if (window.innerHeight >= LNoSupportContent.clientHeight) {
+			LNoSupport.style.height = '100vh';
+		} else {
+			LNoSupport.style.height = '';
+		}
+	}
+
+	//画面回転時の動作
+	window.addEventListener("orientationchange", function() {
+		setTimeout(function() {
+			DisplayOut();
+		}, 100);
+	});
+
+	//初期動作
+	window.onpageshow = function(e) {
+		//safariの場合リロードする
+		if (e.persisted) {
+         window.location.reload();
+     }
+
+		//オフラインで使用可能にする
+		if ('serviceWorker' in navigator) {
+			//古いバージョンの削除
+			if (navigator.onLine) {
+				//オンラインの場合ServiceWorker削除
+				navigator.serviceWorker.getRegistrations().then(function(registrations) {
+					for (let registration of registrations) {
+						registration.unregister();
+					}
+				}).catch(function(err) {
+					// 登録失敗
+					console.log('ServiceWorkerの削除に失敗しました。', err);
+				});
+			}
+
+			navigator.serviceWorker.register('sw.js').then(function(registration) {
+				// 登録成功
+			}).catch(function(err) {
+				// 登録失敗
+				console.log('ServiceWorkerの登録に失敗しました。', err);
+			});
+		}
+
+		stage = 0;
+
+		if (userAgent.indexOf('iphone') != -1) {
+			//iphone
+			Support = false;
+			Device = 'ios';
+		} else if (userAgent.indexOf('ipad') != -1) {
+			//ipad
+			Support = false;
+			Device = 'ios';
+		} else if (userAgent.indexOf('android') != -1) {
+			if (userAgent.indexOf('Android') != -1) {
+				//Android
+				Support = true;
+				Device = 'Android';
+			} else {
+				//AndroidTablet
+				Support = true;
+				Device = 'Android';
+			}
+		} else {
+			//PC
+			Support = true;
+			Device = 'PC';
+		}
+
+		if (Support) {
+			if (userAgent.indexOf('msie') != -1 ||
+				userAgent.indexOf('trident') != -1) {
+				//IE
+				Support = false;
+				Browser = 'IE';
+			} else if (userAgent.indexOf('edge') != -1) {
+				//edge
+				Support = false;
+				Browser = 'Edge';
+			} else if (userAgent.indexOf('opr') != -1) {
+				//Opera
+				if (Device == 'PC') {
+					Support = false;
+				} else {
+					Support = true;
+				}
+				Browser = 'Opera';
+			} else if (userAgent.indexOf('chrome') != -1) {
+				//chrome
+				Support = true;
+				Browser = 'Chrome';
+			} else if (userAgent.indexOf('safari') != -1) {
+				//Safari
+				Support = false;
+				Browser = 'Safari';
+			} else if (userAgent.indexOf('firefox') != -1) {
+				//FireFox
+				Support = false;
+				Browser = 'FireFox';
+			} else if (userAgent.indexOf('opera') != -1) {
+				//Opera
+				if (Device == 'PC') {
+					Support = false;
+				} else {
+					Support = true;
+				}
+				Browser = 'Opera';
+			} else if (userAgent.indexOf('samsungbrowser') != -1) {
+				//Samsung Internet Browser
+				Support = true;
+				Browser = 'SamsungInternetBrowser';
+			} else {
+				//Others
+				Support = false;
+				Browser = 'Unknown';
+			}
+		} else {
+			//例外
+			if (userAgent.indexOf('bluefy') != -1) {
+				//Bluefy
+				Support = true;
+				Browser = 'Bluefy';
+			}
+		}
+
+		//UUIDの登録
+		ble.setUUID("UUID1", "389caaf0-843f-4d3b-959d-c954cce14655", "389caaf1-843f-4d3b-959d-c954cce14655");
+		ble.setUUID("UUID2", "389caaf0-843f-4d3b-959d-c954cce14655", "389caaf2-843f-4d3b-959d-c954cce14655");
+		ble.setUUID("UUID3", "389caaf0-843f-4d3b-959d-c954cce14655", "389caaf3-843f-4d3b-959d-c954cce14655");
+		ble.setUUID("UUID4", "389caaf0-843f-4d3b-959d-c954cce14655", "389caaf4-843f-4d3b-959d-c954cce14655");
+		ble.setUUID("UUID5", "389caaf0-843f-4d3b-959d-c954cce14655", "389caaf5-843f-4d3b-959d-c954cce14655");
+		ble.setUUID("UUID6", "389caaf0-843f-4d3b-959d-c954cce14655", "389caaff-843f-4d3b-959d-c954cce14655");
+
+		//セーブデータの存在確認
+		if (localStorage.getItem('SaveData') == null) {
+			//プリセットを登録する
+			localStorage.setItem('SaveData','60,80,0,0,50,100,0,0,ArrowUp,ArrowDown,ArrowLeft,ArrowRight, ,0,true,0,,100,0,1');
+		}
+		Setting = localStorage.getItem('SaveData').split(',');
+
+		if (Setting.length != 20) {
+			//プリセットを登録する
+			localStorage.setItem('SaveData','60,80,0,0,50,100,0,0,ArrowUp,ArrowDown,ArrowLeft,ArrowRight, ,0,true,0,,100,0,1');
+			Setting = localStorage.getItem('SaveData').split(',');
+		}
+
+		//設定画面の値変更
+		SSlider1.value = Setting[0];
+		SValue1.innerHTML = SSlider1.value + '%';
+		SSlider2.value = Setting[1];
+		SValue2.innerHTML = SSlider2.value + '%';
+		SSlider3.value = Setting[2];
+		if (SSlider3.value > 0) {
+			SValue3.innerHTML = '+' + SSlider3.value;
+		} else {
+			SValue3.innerHTML = SSlider3.value;
+		}
+		SSlider5.value = Setting[4];
+		SValue5.innerHTML = SSlider5.value + '%';
+		SSlider6.value = Setting[5];
+		SValue6.innerHTML = SSlider6.value + '%';
+		SSlider7.value = Setting[6];
+		if (SSlider7.value > 0) {
+			SValue7.innerHTML = '+' + SSlider7.value;
+		} else {
+			SValue7.innerHTML = SSlider7.value;
+		}
+		SSlider8.value = Setting[7];
+		if (SSlider8.value == 0) {
+			SValue8.innerHTML = 'OFF';
+		} else {
+			SValue8.innerHTML = 'ON';
+		}
+
+		for (var i = 0; i < 5; i++) {
+			Key[i] = Setting[8 + i];
+
+			if (Key[i] == 'ArrowUp') {
+				KeyValue[i] = '↑';
+			} else if (Key[i] == 'ArrowDown') {
+				KeyValue[i] = '↓';
+			} else if (Key[i] == 'ArrowLeft') {
+				KeyValue[i] = '←';
+			} else if (Key[i] == 'ArrowRight') {
+				KeyValue[i] = '→';
+			} else if (Key[i] == 'Enter') {
+				KeyValue[i] = 'Enter';
+			} else if (Key[i] == ' ') {
+				KeyValue[i] = 'Spece';
+			} else if(Key[i].match(/^[a-z]$/)) {
+				KeyValue[i] = Key[i].toUpperCase();
+			}else{
+				Key = ['ArrowUp','ArrowDown','ArrowLeft','ArrowRight',' '];
+				KeyValue = ['↑','↓','←','→','Space'];
+				break
+			}
+		}
+
+		SSlider9.value = Setting[13];
+		if (SSlider9.value > 0) {
+			SValue9.innerHTML = '+' + SSlider9.value;
+		} else {
+			SValue9.innerHTML = SSlider9.value;
+		}
+
+		var DisplayGPSwarning = false;
+		if (Setting[14] == 'true') {
+			DisplayGPSwarning = 'true';
+		}
+		if (Support == false || Device == 'ios') {
+			DisplayGPSwarning = false;
+		}
+
+		SSlider10.value = Setting[15];
+		if (SSlider10.value == 0) {
+			SValue10.innerHTML = 'OFF';
+		} else {
+			SValue10.innerHTML = 'ON';
+		}
+
+		if(IPChecker(Setting[16])){
+			CameraIPinput.value = Setting[16];
+			date = new Date();
+			time = Math.floor(date.getTime() / 1000);
+			CameraViewerSource.style.backgroundImage = 'url(http://'+Setting[16]+':81/stream?'+time+')';
+		}else{
+			CameraIPinput.value = '192.168.';
+			CameraIPinput.style.color = "#C2181F";
+			date = new Date();
+			time = Math.floor(date.getTime() / 1000);
+			CameraViewerSource.style.backgroundImage = 'url(http://:81/stream?'+time+')';
+		}
+
+		SSlider11.value = Setting[17];
+		if (SSlider11.value >= 200) {
+			SValue11.innerHTML = '全画面';
+		} else {
+			Svalue11.innerHTML = SSlider11.value + '%';
+		}
+
+		SSlider12.value = Setting[18];
+		if (SSlider12.value == 1) {
+			SValue12.innerHTML = '上';
+		}else if (SSlider12.value == -1) {
+			SValue12.innerHTML = '下';
+		} else {
+			Svalue12.value = '中';
+		}
+
+		SSlider13.value = Setting[19];
+		SValue13.innerHTML = SSlider13.value;
+
+		//設定を反映
+		SettingSet();
+
+		//データ送信開始
+		SendData();
+
+		//サーボ初期位置へ
+		Servo(100);
+
+		GuideButton.innerHTML = '<a href="pdf/' + Device + 'Guide.pdf" target="_blank"><img src="image/Question.png" alt="説明書"></a>';
+		SettingGuideButton.innerHTML = '<a href="pdf/' + Device + 'Setting.pdf" target="_blank"><img src="image/Question.png" alt="設定ガイド"></a>';
+
+		if (Device == 'Android' || Device == 'ios') {
+
+			//hoverを無効にする
+			StartButton.style.opacity = '1';
+			CButton1.style.opacity = '1';
+			CButton2.style.opacity = '1';
+			CButton3.style.opacity = '1';
+			CButton4.style.opacity = '1';
+
+			//キーボードを無効にする
+			document.getElementById('KeySetting').style.display = "none";
+
+			if (Device == 'ios') {
+				//フルスクリーンを無効にする
+				CButton4.style.display = "none";
+			}
+
+		} else {
+			//ジャイロを無効にする
+			CButton3.style.display = "none";
+			document.getElementById('GyroSetting').style.display = "none";
+		}
+
+		if (DisplayGPSwarning) {
+			Status.innerHTML = '<font color="red">初回利用時は位置情報の権限設定をご確認ください</font><br><a href="pdf/Permission' + Device + Browser + '.pdf" target="_blank">ブラウザ権限の設定手順</a>';
+		}
+		if (Support) {
+			//ローディング画面の削除
+			Lcontroller.style.display = 'none';
+			Lsetting.style.display = 'none';
+			LNoSupport.style.display = 'none';
+			LTitle.style.display = '';
+		} else {
+			//非対応ブラウザ
+			DisplayOut();
+			//ローディング画面の削除
+			Lcontroller.style.display = 'none';
+			Lsetting.style.display = 'none';
+			LTitle.style.display = 'none';
+			LNoSupport.style.display = '';
+		}
+		if(false){
+			//デバッグ用
+			//操作画面の表示
+			Lcontroller.style.display = '';
+			Lsetting.style.display = 'none';
+			LNoSupport.style.display = 'none';
+			LTitle.style.display = 'none';
+		}
+		Lloading.style.opacity = 1;
+		DestroyLoading();
+	}
+
+	//ローディング画面の表示
+	function DisplayLoading(FinishFunction) {
+		clearTimeout(LoadingAction);
+		Lloading.style.display = '';
+		if (Lloading.style.opacity < 0) {
+			Lloading.style.opacity = 0;
+			Lloading.style.display = 'none';
+			LoadingAction = setTimeout(function() {
+				DisplayLoading(FinishFunction)
+			}, 10);
+		} else if (Lloading.style.opacity >= 1) {
+			Lloading.style.opacity = 1;
+			if (FinishFunction != null) {
+				FinishFunction();
+			}
+		} else {
+			Lloading.style.opacity = Number(Lloading.style.opacity) + 1/(LoadingSpeed*100);
+			LoadingAction = setTimeout(function() {
+				DisplayLoading(FinishFunction)
+			}, 10);
+		}
+	}
+
+	//ローディング画面の削除
+	function DestroyLoading(FinishFunction) {
+		clearTimeout(LoadingAction);
+		Lloading.style.display = '';
+		if (Lloading.style.opacity > 1) {
+			Lloading.style.opacity = 1;
+			LoadingAction = setTimeout(function() {
+				DestroyLoading(FinishFunction)
+			}, 10);
+		} else if (Lloading.style.opacity <= 0) {
+			Lloading.style.opacity = 0;
+			Lloading.style.display = 'none';
+			if (FinishFunction != null) {
+				FinishFunction();
+			}
+		} else {
+			Lloading.style.opacity = Number(Lloading.style.opacity) - 1/(LoadingSpeed*100);
+			LoadingAction = setTimeout(function() {
+				DestroyLoading(FinishFunction)
+			}, 10);
+		}
+	}
+
+	//モード切り替えボタン
+	preventModeChangeButton = true;
+	ModeChangeButton.addEventListener('click', function(e) {
+		if(preventModeChangeButton){
+			//リンク遷移を無効にする
+			e.preventDefault();
+			//ローディング画面に移項する
+			LoadingImageSource.style.animation = 'initial';
+			stage = 0;
+			DisplayLoading(OnFinishModeChangeButton);
+		}
+	});
+	beforeLoadingLotation = 0;
+	function OnFinishModeChangeButton(){
+		preventModeChangeButton = false;
+		ModeChangeButton.click();
+	}
+
+	//スタートボタン
+	StartButton.addEventListener('click', function() {
+		StartButton.disabled = true;
+		//ローディング画面
+		DisplayLoading(ScanStart);
+	});
+
+	//スキャン開始
+	function ScanStart() {
+		stage = 1;
+		ble.scan('UUID6');
+	}
+
+
+	//スキャン成功
+	ble.onScan = function(deviceName) {
+		//接続する
+		stage = 2;
+		ble.connectGATT('UUID6');
+	}
+
+	//接続完了
+	ble.onConnectGATT = function(uuid) {
+		if(stage == 2){
+			stage = 3;
+			setTimeout(function() {
+				OnConnectFinish();
+			}, 1000);
+		}else if(stage == 5){
+			DestroyLoading(null);
+			stage = 4;
+		}
+	}
+
+	//bCore切断時
+	ble.onDisconnect = function() {
+		if(stage == 5){
+
+		}else if(stage == 4){
+			stage = 5;
+			DisplayLoading()
+		}else{
+			//接続する
+			stage = 2;
+			ble.connectGATT('UUID6');
+		}
+	}
+
+	function OnConnectFinish() {
+		if (stage == 3) {
+			if (FirstTime == 'true') {
+				FirstTime = 'false';
+				Save();
+			}
+
+			//コントロール画面の表示
+			Lcontroller.style.display = '';
+			//タイトル画面の削除
+			LTitle.style.display = 'none';
+			//ローディング画面の削除
+			DestroyLoading(null);
+			stage = 4;
+		}
+	};
+
+	//コントローラー
+
+	//設定ボタン
+	CButton1.addEventListener('click', function() {
+		SettingNow = true;
+		KeyBoard = false;
+		GyroActive = false;
+		BackKeyPressFlag = false;
+		FrontKeyPressFlag = false;
+		BrakeKeyPressFlag = false;
+		RightKeyPressFlag = false;
+		LeftKeyPressFlag = false;
+		HSlider.disabled = false;
+		HSlider.value = 100;
+		VSlider.disabled = false;
+		VSlider.value = 100;
+		PWM(100);
+		Servo(100);
+		CButton3.setAttribute('src', 'image/GyroOn.png');
+		Lsetting.style.display = '';
+		//Lcontroller.style.display = 'none';
+	});
+
+	//ライトボタン
+	CButton2.addEventListener('click', function() {
+		if (LightActive) {
+			LightActive = false;
+			PortValue = 0;
+			CButton2.setAttribute('src', 'image/LightOn.png');
+		} else {
+			LightActive = true;
+			PortValue = 3;
+			CButton2.setAttribute('src', 'image/LightOff.png');
+		}
+	});
+
+	//ジャイロボタン
+	CButton3.addEventListener('click', function() {
+		//ジャイロ権限を確認する
+		if (DeviceMotionEvent && DeviceMotionEvent.requestPermission && typeof DeviceMotionEvent.requestPermission === 'function') {
+			DeviceMotionEvent.requestPermission();
+		}
+		if (DeviceOrientationEvent && DeviceOrientationEvent.requestPermission && typeof DeviceOrientationEvent.requestPermission === 'function') {
+			DeviceOrientationEvent.requestPermission();
+		}
+
+		if (GyroActive) {
+			RotateBefore = false;
+			GyroActive = false;
+			HSlider.disabled = false;
+			HSlider.value = 100;
+			Servo(100);
+			CButton3.setAttribute('src', 'image/GyroOn.png');
+		} else {
+			RotateBefore = true;
+			GyroActive = true;
+			HSlider.disabled = true;
+			CButton3.setAttribute('src', 'image/GyroOff.png');
+		}
+	});
+
+	//フルスクリーン
+	CButton4.addEventListener('click', function() {
+		var target = FullscreenArea;
+
+		if (Fullscreen) {
+			if (document.webkitCancelFullScreen) {
+				document.webkitCancelFullScreen(); //Chrome15+, Safari5.1+, Opera15+
+			} else if (document.mozCancelFullScreen) {
+				document.mozCancelFullScreen(); //FF10+
+			} else if (document.msExitFullscreen) {
+				document.msExitFullscreen(); //IE11+
+			} else if (document.cancelFullScreen) {
+				document.cancelFullScreen(); //Gecko:FullScreenAPI仕様
+			} else if (document.exitFullscreen) {
+				document.exitFullscreen(); // HTML5 Fullscreen API仕様
+			}
+		} else {
+			if (target.webkitRequestFullscreen) {
+				target.webkitRequestFullscreen(); //Chrome15+, Safari5.1+, Opera15+
+			} else if (target.mozRequestFullScreen) {
+				target.mozRequestFullScreen(); //FF10+
+			} else if (target.msRequestFullscreen) {
+				target.msRequestFullscreen(); //IE11+
+			} else if (target.requestFullscreen) {
+				target.requestFullscreen(); // HTML5 Fullscreen API仕様
+			} else {
+				alert('ご利用のブラウザはフルスクリーン操作に対応していません');
+				return;
+			}
+		}
+	});
+
+	//再接続ボタン
+	CVButton1.addEventListener('click', function() {
+		check1 = CameraViewerSource.style.backgroundImage;
+		check1 = check1.replace(/url\("http:\/\/|:81\/stream\?.*"\)/g,'');
+		CameraViewerSource.style.backgroundImage = 'url()';
+		date = new Date();
+		time = Math.floor(date.getTime() / 1000);
+		CameraViewerSource.style.backgroundImage = 'url(http://'+check1+':81/stream?'+time+')';
+	});
+
+	document.onfullscreenchange = document.onmozfullscreenchange = document.onwebkitfullscreenchange = document.onmsfullscreenchange = function(event) {
+		if (Fullscreen) {
+			Fullscreen = false;
+			CButton4.setAttribute('src', 'image/FullscreenOn.png');
+		} else {
+			Fullscreen = true;
+			CButton4.setAttribute('src', 'image/FullscreenOff.png');
+		}
+	};
+
+	//垂直スライダー(PWM)
+	VSlider.addEventListener('input', function() {
+		// スライダーの値が変わったとき
+		PWM(VSlider.value);
+	});
+
+	VSlider.addEventListener('change', function() {
+		// スライダーから手を離したとき
+		if (KeyBoard == false) {
+			VSlider.value = 100;
+			PWM(100);
+		}
+	});
+
+	//垂平スライダー(Servo)
+	HSlider.addEventListener('input', function() {
+		// スライダーの値が変わったとき
+		Servo(HSlider.value);
+	});
+
+	HSlider.addEventListener('change', function() {
+		// スライダーから手を離したとき
+		if (KeyBoard == false) {
+			HSlider.value = 100;
+			Servo(100);
+		}
+	});
+
+	//キーボード操作
+	document.addEventListener('keydown', function(event) {
+		if (SettingNow == false) {
+			if(stage == 4){
+				if (event.key === Key[4]) {
+					//ブレーキ
+					if (BrakeKeyPressFlag == false){
+						clearTimeout(FrontKeyPressRepeat);
+						clearTimeout(BackKeyPressRepeat);
+						BrakeKeyPressFlag = true;
+						NowSpeed = 200 - Number(VSlider.value);
+						BrakeKeyPress();
+					}
+				} else if (event.key === Key[0]) {
+					//アクセル
+					if (FrontKeyPressFlag == false) {
+						clearTimeout(BackKeyPressRepeat);
+						FrontKeyPressFlag = true;
+						NowSpeed = Number(VSlider.value);
+						FrontKeyPress();
+					}
+				} else if (event.key === Key[1]) {
+					//ブレーキ
+					if (BackKeyPressFlag == false) {
+						clearTimeout(FrontKeyPressRepeat);
+						BackKeyPressFlag = true;
+						NowSpeed = Number(VSlider.value);
+						BackKeyPress();
+					}
+				} else if (event.key === Key[3]) {
+					//右
+					KeyBoard = true;
+					HSlider.disabled = true;
+					VSlider.disabled = true;
+					RightKeyPressFlag = true;
+					HSlider.value = 200;
+					Servo(200);
+				} else if (event.key === Key[2]) {
+					//左
+					KeyBoard = true;
+					HSlider.disabled = true;
+					VSlider.disabled = true;
+					LeftKeyPressFlag = true;
+					HSlider.value = 0;
+					Servo(0);
+				}
+			}
+		}
+	});
+
+	function FrontKeyPress() {
+		if(BrakeKeyPressFlag == false){
+			if(NowSpeed > 100){
+				NewSpeed = NowSpeed + ((200-NowSpeed)/100)**2;
+			}else{
+				NewSpeed = NowSpeed + (NowSpeed/50)**2;
+			}
+			if(NewSpeed>200){
+				NewSpeed=200;
+			}
+			KeyBoard = true;
+			HSlider.disabled = true;
+			VSlider.disabled = true;
+			NowSpeed = NewSpeed;
+			VSlider.value=NewSpeed;
+			PWM(NewSpeed);
+			if (FrontKeyPressFlag) {
+				FrontKeyPressRepeat = setTimeout(function() {
+					FrontKeyPress();
+				}, 10);
+			}
+		}
+	}
+
+	function BackKeyPress() {
+		if(BrakeKeyPressFlag == false){
+			if(NowSpeed > 100){
+				NewSpeed = NowSpeed - ((200-NowSpeed)/50)**2;
+			}else{
+				NewSpeed = NowSpeed - (NowSpeed/100)**2;
+			}
+			if(NewSpeed<0){
+				NewSpeed=0;
+			}
+			KeyBoard = true;
+			HSlider.disabled = true;
+			VSlider.disabled = true;
+			NowSpeed = NewSpeed;
+			VSlider.value=NewSpeed;
+			PWM(NewSpeed);
+			if (BackKeyPressFlag) {
+				BackKeyPressRepeat = setTimeout(function() {
+					BackKeyPress();
+				}, 10);
+			}
+		}
+	}
+
+	function BrakeKeyPress() {
+		if (BrakeKeyPressFlag) {
+			if(NowSpeed>100){
+				NewSpeed = NowSpeed - (NowSpeed/50)**2;
+				if(NewSpeed<100){
+					NewSpeed=100;
+				}
+			}else{
+				NewSpeed = NowSpeed + ((200 - NowSpeed)/50)**2;
+				if(NewSpeed>100){
+					NewSpeed=100;
+				}
+			}
+			NowSpeed = NewSpeed;
+			VSlider.value=NewSpeed;
+			PWM(NewSpeed);
+			BrakeKeyPressRepeat = setTimeout(function() {
+				BrakeKeyPress();
+			}, 10);
+		}
+	}
+
+	document.addEventListener('keyup', function(event) {
+		if (SettingNow == false) {
+			if (event.key === Key[4]) {
+				//停止
+				BrakeKeyPressFlag = false;
+				clearTimeout(BrakeKeyPressRepeat);
+				KeyBoard = false;
+				HSlider.disabled = false;
+				VSlider.disabled = false;
+				VSlider.value = 100;
+				PWM(100);
+				if (FrontKeyPressFlag) {
+					NowSpeed = Number(VSlider.value);
+					FrontKeyPress();
+				}else if(BackKeyPressFlag){
+					NowSpeed = Number(VSlider.value);
+					BackKeyPress();
+				}
+			} else if (event.key === Key[3]) {
+				//右
+				KeyBoard = false;
+				HSlider.disabled = false;
+				VSlider.disabled = false;
+				RightKeyPressFlag = false;
+				if(LeftKeyPressFlag == false){
+					HSlider.value = 100;
+					Servo(100);
+				}
+			} else if (event.key === Key[2]) {
+				//左
+				KeyBoard = false;
+				HSlider.disabled = false;
+				VSlider.disabled = false;
+				LeftKeyPressFlag = false;
+				if(RightKeyPressFlag == false){
+					HSlider.value = 100;
+					Servo(100);
+				}
+			} else if (event.key === Key[0]) {
+				//前
+				FrontKeyPressFlag = false;
+				clearTimeout(FrontKeyPressRepeat);
+				KeyBoard = false;
+				HSlider.disabled = false;
+				VSlider.disabled = false;
+				if(BackKeyPressFlag){
+					NowSpeed = Number(VSlider.value);
+					BackKeyPress();
+				}
+			} else if (event.key === Key[1]) {
+				//後
+				BackKeyPressFlag = false;
+				clearTimeout(BackKeyPressRepeat);
+				KeyBoard = false;
+				HSlider.disabled = false;
+				VSlider.disabled = false;
+				if(FrontKeyPressFlag){
+					NowSpeed = Number(VSlider.value);
+					FrontKeyPress();
+				}
+			}
+		}
+	});
+
+	//画面の傾き
+	window.addEventListener("deviceorientation", function(event) {
+		var X = event.beta;
+		var Y = event.gamma;
+
+		var check1;
+		var check2;
+		var check3;
+
+		var n = 0;
+		var m = 0;
+
+		if (X > 10 && -90 < Y && Y < 90) {
+			n++;
+			m = 1;
+		}
+
+		if (X < -10 && -90 < Y && Y < 90) {
+			n++;
+			m = 2;
+		}
+
+		if (Y > 10 && -90 < X && X < 90) {
+			n++;
+			m = 3;
+		}
+
+		if (Y < -10 && -90 < X && X < 90) {
+			n++;
+			m = 4;
+		}
+
+		if (Rotate && n == 1) {
+			Rotate = false;
+			RotateSet = m;
+		}
+
+		if (RotateSet == 1) {
+			check3 = Math.abs(Y);
+
+			if (check3 > RotateMax) {
+				check1 = RotateMax - RotateMin;
+			} else {
+				check1 = check3 - RotateMin;
+			}
+
+			if (Y >= 0) {
+				//右旋回
+				check2 = 100 + 100 * check1 / (RotateMax - RotateMin);
+			} else {
+				//左旋回
+				check2 = 100 - 100 * check1 / (RotateMax - RotateMin);
+			}
+		} else if (RotateSet == 2) {
+			check3 = Math.abs(Y);
+
+			if (check3 > RotateMax) {
+				check1 = RotateMax - RotateMin;
+			} else {
+				check1 = check3 - RotateMin;
+			}
+
+			if (Y >= 0) {
+				//左旋回
+				check2 = 100 - 100 * check1 / (RotateMax - RotateMin);
+			} else {
+				//右旋回
+				check2 = 100 + 100 * check1 / (RotateMax - RotateMin);
+			}
+		} else if (RotateSet == 3) {
+			check3 = Math.abs(X);
+
+			if (check3 > RotateMax) {
+				check1 = RotateMax - RotateMin;
+			} else {
+				check1 = check3 - RotateMin;
+			}
+
+			if (X >= 0) {
+				//左旋回
+				check2 = 100 - 100 * check1 / (RotateMax - RotateMin);
+			} else {
+				//右旋回
+				check2 = 100 + 100 * check1 / (RotateMax - RotateMin);
+			}
+		} else if (RotateSet == 4) {
+			check3 = Math.abs(X);
+
+			if (check3 > RotateMax) {
+				check1 = RotateMax - RotateMin;
+			} else {
+				check1 = check3 - RotateMin;
+			}
+
+			if (X >= 0) {
+				//右旋回
+				check2 = 100 + 100 * check1 / (RotateMax - RotateMin);
+			} else {
+				//左旋回
+				check2 = 100 - 100 * check1 / (RotateMax - RotateMin);
+			}
+		}
+
+		if (RotateSet > 0 && Rotate == false && GyroActive) {
+			if (check3 < RotateMin) {
+				HSlider.value = 100;
+				Servo(100);
+			} else {
+				HSlider.value = check2;
+				Servo(check2);
+			}
+		}
+
+	}, false);
+
+	//PWM
+	function PWM(value) {
+
+		var check1;
+		var check2;
+		var check3;
+
+		if (value == 100) {
+			check2 = 127;
+		} else if (value > 100) {
+			check1 = PWMRange - PWMMin;
+			value -= 100;
+			check2 = value / 100 * check1 + 127 + PWMMin;
+		} else {
+			check1 = PWMRange - PWMMin;
+			check3 = 100 - value;
+			check2 = 127 - check1 / 100 * check3 - PWMMin;
+		}
+
+		PWMValue = check2;
+	};
+
+	//Servo
+	function Servo(value) {
+		var check1;
+		var check2;
+		var check3;
+
+		if (value >= 100) {
+			check1 = ServoRange;
+			value -= 100;
+			check2 = value / 100 * check1 + (127 + ServoAdj);
+		} else {
+			check1 = ServoRange;
+			check3 = 100 - value;
+			check2 = (127 + ServoAdj) - check1 / 100 * check3;
+		}
+
+		ServoValue = check2;
+	};
+
+	//データ送信
+	var TimeCount = 0;
+
+	function SendData() {
+		if (stage >= 3) {
+			//上限の数字にしない
+			if (ServoValue < 5) {
+				ServoValue = 5;
+			} else if (ServoValue > 250) {
+				ServoValue = 250;
+			}
+			if (PWMValue < 5) {
+				PWMValue = 5;
+			} else if (PWMValue > 250) {
+				PWMValue = 250;
+			}
+
+			//操作反転
+			var SendServoValue = ServoValue;
+			if (SSlider10.value == 1) {
+				SendServoValue = 127 + (127 - ServoValue);
+			}
+			WriteArray = [parseInt(PWMValue), parseInt(PWMValue), parseInt(PortValue), parseInt(SendServoValue), parseInt(SendServoValue), parseInt(SendServoValue), parseInt(SendServoValue)];
+			ble.write('UUID5', WriteArray);
+		}
+
+		//console.log(parseInt(ServoValue));
+		//console.log(parseInt(PWMValue));
+		//console.log('============');
+
+		//ローディングテキストの変更
+		var text1;
+
+		if (TimeCount >= 4000) {
+			text1 = '';
+			TimeCount = SendTime;
+		} else if (TimeCount >= 3000) {
+			text1 = '...';
+			TimeCount += SendTime;
+		} else if (TimeCount >= 2000) {
+			text1 = '..';
+			TimeCount += SendTime;
+		} else if (TimeCount >= 1000) {
+			text1 = '.';
+			TimeCount += SendTime;
+		} else {
+			text1 = '';
+			TimeCount += SendTime;
+		}
+
+		var text2;
+		if (stage == 0) {
+			text1 = '';
+			text2 = '';
+		} else if (stage == 1) {
+			text2 = 'Pairing';
+		} else if (stage == 2) {
+			text2 = 'Certifying';
+		} else if (stage == 3 || stage == 4) {
+			text1 = '';
+			text2 = 'Complete!';
+		} else if (stage == 5) {
+			text2 = 'Reconnecting';
+		} else {
+			text2 = 'Loading';
+		}
+
+		LoadingStatus.innerHTML = text2 + text1;
+
+		setTimeout(function() {
+			SendData()
+		}, SendTime);
+	}
+
+	//設定画面
+	SSlider1.addEventListener('input', function() {
+		SValue1.innerHTML = SSlider1.value + '%';
+		PWMValue = 127 + 127 * SSlider1.value / 100;
+	});
+	SSlider1.addEventListener('change', function() {
+		Save();
+		PWMValue = 127;
+	});
+	SSlider2.addEventListener('input', function() {
+		SValue2.innerHTML = SSlider2.value + '%';
+		var check1 = ServoMaxBase - (127 + Number(SSlider3.value));
+		if (check1 < 0) {
+			check1 = 0;
+		}
+		ServoValue = 127 + Number(SSlider3.value) + check1 * Number(SSlider2.value) / 100;
+	});
+	SSlider2.addEventListener('change', function() {
+		Save();
+		ServoValue = 127 + Number(SSlider3.value);
+	});
+	SSlider3.addEventListener('input', function() {
+		if (SSlider3.value > 0) {
+			SValue3.innerHTML = '+' + SSlider3.value;
+		} else {
+			SValue3.innerHTML = SSlider3.value;
+		}
+		ServoValue = 127 + Number(SSlider3.value);
+	});
+	SSlider3.addEventListener('change', function() {
+		Save();
+		ServoValue = 127 + Number(SSlider3.value);
+	});
+	SSlider5.addEventListener('input', function() {
+		Lsetting.style.opacity = '0.8';
+		SValue5.innerHTML = SSlider5.value + '%';
+		GyroActive = true;
+
+		var max = RotateMaxBase * (110 - Number(SSlider5.value)) / 100;
+		var min = 10 * (110 - Number(SSlider5.value)) / 100;
+
+		RotateMax = max;
+		RotateMin = min;
+	});
+	SSlider5.addEventListener('change', function() {
+		Lsetting.style.opacity = '1';
+		Save();
+		ServoValue = 127 + Number(SSlider3.value);
+		GyroActive = false;
+		HSlider.disabled = false;
+		HSlider.value = 100;
+		CButton3.setAttribute('src', 'image/GyroOn.png');
+	});
+	SSlider6.addEventListener('input', function() {
+		Lsetting.style.opacity = '0.8';
+
+		var check1 = 30 + 15 * (Number(SSlider6.value) - 100) / 100;
+		Slider.style.height = check1 + 'vw';
+		HSliderBox.style.height = check1 + 'vw';
+		VSliderBox.style.height = check1 + 'vw';
+		HSliderBox.style.width = check1 + 'vw';
+		VSliderBox.style.width = check1 + 'vw';
+		SValue6.innerHTML = SSlider6.value + '%';
+	});
+	SSlider6.addEventListener('change', function() {
+		Lsetting.style.opacity = '1';
+		Save();
+	});
+	SSlider7.addEventListener('input', function() {
+		Lsetting.style.opacity = '0.8';
+
+		Slider.style.top = Number(SSlider7.value) + 'vh';
+
+		if (SSlider7.value > 0) {
+			SValue7.innerHTML = '+' + SSlider7.value;
+		} else {
+			SValue7.innerHTML = SSlider7.value;
+		}
+	});
+	SSlider7.addEventListener('change', function() {
+		Lsetting.style.opacity = '1';
+		Save();
+	});
+	SSlider9.addEventListener('input', function() {
+		Lsetting.style.opacity = '0.8';
+
+		Slider.style.width = 79 + Number(SSlider9.value) + 'vw';
+
+		if (SSlider9.value > 0) {
+			SValue9.innerHTML = '+' + SSlider9.value;
+		} else {
+			SValue9.innerHTML = SSlider9.value;
+		}
+	});
+	SSlider9.addEventListener('change', function() {
+		Lsetting.style.opacity = '1';
+		Save();
+	});
+	SSlider8.addEventListener('input', function() {
+		Lsetting.style.opacity = '0.8';
+		if (SSlider8.value == 0) {
+			SValue8.innerHTML = 'OFF';
+
+			document.getElementById('HorizontalSlider').style.right = '';
+			document.getElementById('HorizontalSlider').style.left = '0';
+			document.getElementById('VerticalSlider').style.right = '0';
+			document.getElementById('VerticalSlider').style.left = '';
+		} else {
+			SValue8.innerHTML = 'ON';
+
+			document.getElementById('HorizontalSlider').style.right = '0';
+			document.getElementById('HorizontalSlider').style.left = '';
+			document.getElementById('VerticalSlider').style.right = '';
+			document.getElementById('VerticalSlider').style.left = '0';
+		}
+	});
+	SSlider8.addEventListener('change', function() {
+		Lsetting.style.opacity = '1';
+		Save();
+	});
+	SSlider10.addEventListener('input', function() {
+		if (SSlider10.value == 0) {
+			SValue10.innerHTML = 'OFF';
+		} else {
+			SValue10.innerHTML = 'ON';
+		}
+	});
+	SSlider10.addEventListener('change', function() {
+		Save();
+	});
+	SSlider11.addEventListener('input', function() {
+		Lsetting.style.opacity = '0.8';
+
+		if(SSlider11.value >= 200){
+			CameraViewer.style.width = '100%';
+			CameraViewer.style.height = '100%';
+			CVbutton1.style.top = '0'
+			CVbutton1.style.bottom = 'initial';
+			SValue11.innerHTML = '全画面';
+		}else{
+			if(SSlider12.value == 1){
+				CVbutton1.style.top = 'initial';
+				CVbutton1.style.bottom = '-2rem';
+			}else if(SSlider12.value == -1){
+				CVbutton1.style.top = '-2rem'
+				CVbutton1.style.bottom = 'initial';
+			}else{
+				CVbutton1.style.top = '-2rem'
+				CVbutton1.style.bottom = 'initial';
+			}
+			CameraViewer.style.width = 30 * Number(SSlider11.value) / 100 + 'vw';
+			CameraViewer.style.height = 30 * Number(SSlider11.value) / 100 / 320 * 240 + 'vw';
+			SValue11.innerHTML = SSlider11.value + '%';
+		}
+	});
+	SSlider11.addEventListener('change', function() {
+		Lsetting.style.opacity = '1';
+		Save();
+	});
+	SSlider12.addEventListener('input', function() {
+		Lsetting.style.opacity = '0.8';
+
+		if(SSlider12.value == 1){
+			CameraViewer.style.top = '0';
+			if(SSlider11.value < 200){
+				CVbutton1.style.top = 'initial';
+				CVbutton1.style.bottom = '-2rem';
+			}
+			SValue12.innerHTML = '上';
+		}else if(SSlider12.value == -1){
+			CameraViewer.style.bottom = '0';
+			if(SSlider11.value < 200){
+				CVbutton1.style.top = '-2rem'
+				CVbutton1.style.bottom = 'initial';
+			}
+			SValue12.innerHTML = '下';
+		}else{
+			if(SSlider11.value < 200){
+				CVbutton1.style.top = '-2rem'
+				CVbutton1.style.bottom = 'initial';
+			}
+			CameraViewer.style.top = 'initial';
+			CameraViewer.style.bottom = 'initial';
+			SValue12.innerHTML = '中';
+		}
+	});
+	SSlider12.addEventListener('change', function() {
+		Lsetting.style.opacity = '1';
+		Save();
+	});
+	SSlider13.addEventListener('input', function() {
+		Lsetting.style.opacity = '0.8';
+
+		if(SSlider13.value == 2){
+			CameraViewerSource.style.transform = 'scale(1, -1)';
+		}else if(SSlider13.value == 3){
+			CameraViewerSource.style.transform = 'scale(1, 1)';
+		}else if(SSlider13.value == 4){
+			CameraViewerSource.style.transform = 'scale(-1, 1)';
+		}else{
+			CameraViewerSource.style.transform = 'scale(-1, -1)';
+		}
+		SValue13.innerHTML = SSlider13.value;
+
+	});
+	SSlider13.addEventListener('change', function() {
+		Lsetting.style.opacity = '1';
+		Save();
+	});
+
+	function IPChecker(value){
+		IPv4 = /^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/;
+		IPv6 = /^(([0-9a-fA-F]{1,4}:){7,7}[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,7}:|([0-9a-fA-F]{1,4}:){1,6}:[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,5}(:[0-9a-fA-F]{1,4}){1,2}|([0-9a-fA-F]{1,4}:){1,4}(:[0-9a-fA-F]{1,4}){1,3}|([0-9a-fA-F]{1,4}:){1,3}(:[0-9a-fA-F]{1,4}){1,4}|([0-9a-fA-F]{1,4}:){1,2}(:[0-9a-fA-F]{1,4}){1,5}|[0-9a-fA-F]{1,4}:((:[0-9a-fA-F]{1,4}){1,6})|:((:[0-9a-fA-F]{1,4}){1,7}|:)|fe80:(:[0-9a-fA-F]{0,4}){0,4}%[0-9a-zA-Z]{1,}|::(ffff(:0{1,4}){0,1}:){0,1}((25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9])\.){3,3}(25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9])|([0-9a-fA-F]{1,4}:){1,4}:((25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9])\.){3,3}(25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9]))$/;
+		return value.match(IPv4)||value.match(IPv6)
+	};
+
+	CameraIPinput.addEventListener('input', function(e) {
+		if (IPChecker(e.srcElement.value)){
+			CameraIPinput.style.color = "#000";
+		}else{
+			CameraIPinput.style.color = "#C2181F";
+		}
+	});
+	CameraIPinput.addEventListener('change', function() {
+		Save();
+	});
+
+	var HoverColor = '#868686';
+	var HoverFontColor = '#ffffff';
+	var SelectColor = '#d92222';
+	var SelectFontColor = '#ffffff';
+
+	var NowSelect = 0;
+
+	SkeySet1.addEventListener('mouseover', function() {
+		if (NowSelect == 0) {
+			SkeySet1.style.background = HoverColor;
+			SkeySet1.style.color = HoverFontColor;
+		}
+	});
+	SkeySet1.addEventListener('click', function() {
+		if (NowSelect == 0) {
+			SkeySet1.style.background = SelectColor;
+			SkeySet1.style.color = SelectFontColor;
+			NowSelect = 1;
+		}
+	});
+	SkeySet1.addEventListener('mouseout', function() {
+		if (NowSelect == 0) {
+			SkeySet1.style.background = '';
+			SkeySet1.style.color = '';
+		}
+	});
+
+	SkeySet2.addEventListener('mouseover', function() {
+		if (NowSelect == 0) {
+			SkeySet2.style.background = HoverColor;
+			SkeySet2.style.color = HoverFontColor;
+		}
+	});
+	SkeySet2.addEventListener('click', function() {
+		if (NowSelect == 0) {
+			SkeySet2.style.background = SelectColor;
+			SkeySet2.style.color = SelectFontColor;
+			NowSelect = 2;
+		}
+	});
+	SkeySet2.addEventListener('mouseout', function() {
+		if (NowSelect == 0) {
+			SkeySet2.style.background = '';
+			SkeySet2.style.color = '';
+		}
+	});
+
+	SkeySet3.addEventListener('mouseover', function() {
+		if (NowSelect == 0) {
+			SkeySet3.style.background = HoverColor;
+			SkeySet3.style.color = HoverFontColor;
+		}
+	});
+	SkeySet3.addEventListener('click', function() {
+		if (NowSelect == 0) {
+			SkeySet3.style.background = SelectColor;
+			SkeySet3.style.color = SelectFontColor;
+			NowSelect = 3;
+		}
+	});
+	SkeySet3.addEventListener('mouseout', function() {
+		if (NowSelect == 0) {
+			SkeySet3.style.background = '';
+			SkeySet3.style.color = '';
+		}
+	});
+
+	SkeySet4.addEventListener('mouseover', function() {
+		if (NowSelect == 0) {
+			SkeySet4.style.background = HoverColor;
+			SkeySet4.style.color = HoverFontColor;
+		}
+	});
+	SkeySet4.addEventListener('click', function() {
+		if (NowSelect == 0) {
+			SkeySet4.style.background = SelectColor;
+			SkeySet4.style.color = SelectFontColor;
+			NowSelect = 4;
+		}
+	});
+	SkeySet4.addEventListener('mouseout', function() {
+		if (NowSelect == 0) {
+			SkeySet4.style.background = '';
+			SkeySet4.style.color = '';
+		}
+	});
+
+	SkeySet5.addEventListener('mouseover', function() {
+		if (NowSelect == 0) {
+			SkeySet5.style.background = HoverColor;
+			SkeySet5.style.color = HoverFontColor;
+		}
+	});
+	SkeySet5.addEventListener('click', function() {
+		if (NowSelect == 0) {
+			SkeySet5.style.background = SelectColor;
+			SkeySet5.style.color = SelectFontColor;
+			NowSelect = 5;
+		}
+	});
+	SkeySet5.addEventListener('mouseout', function() {
+		if (NowSelect == 0) {
+			SkeySet5.style.background = '';
+			SkeySet5.style.color = '';
+		}
+	});
+
+	document.addEventListener('keydown', function(event) {
+		if (NowSelect != 0) {
+			KeySettingSet(event.key);
+		}
+	});
+
+	function KeySettingSet(SetKey){
+
+		var check1 = SetKey;
+		var check2 = check1;
+		var check3 = ['前', '後', '左', '右', '停止'];
+		var KeySetDisplay = [keySet1, keySet2, keySet3, keySet4, keySet5];
+
+		if (check1 == 'ArrowUp') {
+			check2 = '↑';
+		} else if (check1 == 'ArrowDown') {
+			check2 = '↓';
+		} else if (check1 == 'ArrowLeft') {
+			check2 = '←';
+		} else if (check1 == 'ArrowRight') {
+			check2 = '→';
+		} else if (check1 == 'Enter') {
+			check2 = 'Enter';
+		} else if (check1 == ' ') {
+			check2 = 'Space';
+		} else if (check1.match(/^[a-z]$/)) {
+			check2 = check1.toUpperCase();
+		} else {
+			check2 = null;
+		}
+
+		if (check2) {
+			for (var i = 0; i < 5; i++) {
+				if (Key[i] == check1) {
+					KeySetDisplay[i].innerHTML = check3[i] + ' / ' + KeyValue[NowSelect-1];
+					Key[i] = Key[NowSelect-1];
+					KeyValue[i] = KeyValue[NowSelect-1];
+					break
+				}
+			}
+			KeySetDisplay[NowSelect-1].innerHTML = check3[NowSelect-1] + ' / ' + check2;
+			Key[NowSelect-1] = check1;
+			KeyValue[NowSelect-1] = check2;
+			Save();
+		}
+
+		SkeySet1.style.background = '';
+		SkeySet1.style.color = '';
+		SkeySet2.style.background = '';
+		SkeySet2.style.color = '';
+		SkeySet3.style.background = '';
+		SkeySet3.style.color = '';
+		SkeySet4.style.background = '';
+		SkeySet4.style.color = '';
+		SkeySet5.style.background = '';
+		SkeySet5.style.color = '';
+
+		NowSelect = 0;
+	}
+
+	//Enterボタン
+	SButton1.addEventListener('click', function() {
+		SettingNow = false;
+		SettingSet();
+		Lsetting.style.opacity = '1';
+		if (RotateBefore) {
+			GyroActive = true;
+			HSlider.disabled = true;
+			CButton3.setAttribute('src', 'image/GyroOff.png');
+		}
+
+		//Lcontroller.style.display = '';
+		Lsetting.style.display = 'none';
+	});
+
+	function Save() {
+		check1 = ''
+		if(IPChecker(CameraIPinput.value)){
+			check1　= CameraIPinput.value
+		}
+
+		localStorage.setItem('SaveData', SSlider1.value + ',' + SSlider2.value + ',' + SSlider3.value + ',' + '0' + ',' + SSlider5.value + ',' + SSlider6.value + ',' + SSlider7.value + ',' + SSlider8.value + ',' + Key[0] + ',' + Key[1] + ',' + Key[2] +
+			',' + Key[3] + ',' + Key[4] + ',' + SSlider9.value + ',' + FirstTime + ',' + SSlider10.value + ',' + check1 + ',' + SSlider11.value + ',' + SSlider12.value + ',' + SSlider13.value);
+	};
+
+	//設定データを反映させる
+	function SettingSet() {
+		Setting = localStorage.getItem('SaveData').split(',').map(Number);
+		SettingString = localStorage.getItem('SaveData').split(',');
+		PWMMin = 30 * Setting[0] / 100
+		PWMRange = 127 * Setting[0] / 100;
+		ServoAdj = Setting[2];
+		//ServoMax = ServoMaxBase + Setting[3];
+		var check1 = ServoMaxBase - (127 + ServoAdj);
+		if (check1 < 0) {
+			check1 = 0;
+		}
+		ServoRange = check1 * Setting[1] / 100;
+
+		if ((127 + ServoAdj - ServoRange) < 0) {
+			ServoRange = 127 + ServoAdj;
+		}
+
+		var max = RotateMaxBase * (110 - Setting[4]) / 100;
+		var min = 10 * (110 - Setting[4]) / 100;
+		RotateMax = max;
+		RotateMin = min;
+
+		//レバーサイズ
+		var check1 = 30 + 15 * (Setting[5] - 100) / 100;
+		Slider.style.height = check1 + 'vw';
+		HSliderBox.style.height = check1 + 'vw';
+		VSliderBox.style.height = check1 + 'vw';
+		HSliderBox.style.width = check1 + 'vw';
+		VSliderBox.style.width = check1 + 'vw';
+		SValue6.innerHTML = SSlider6.value + '%';
+
+		//レバー位置
+		Slider.style.top = Setting[6] + 'vh';
+		Slider.style.width = 79 + Setting[13] + 'vw';
+
+
+		//左右反転
+		if (Setting[7] == 0) {
+			document.getElementById('HorizontalSlider').style.right = '';
+			document.getElementById('HorizontalSlider').style.left = '0';
+			document.getElementById('VerticalSlider').style.right = '0';
+			document.getElementById('VerticalSlider').style.left = '';
+		} else {
+			document.getElementById('HorizontalSlider').style.right = '0';
+			document.getElementById('HorizontalSlider').style.left = '';
+			document.getElementById('VerticalSlider').style.right = '';
+			document.getElementById('VerticalSlider').style.left = '0';
+		}
+
+		//キー設定の登録
+		for (var i = 1; i <= 5; i++) {
+			NowSelect = i;
+			KeySettingSet(SettingString[7+i]);
+		}
+
+		//カメラIPの反映
+		check1 = CameraViewerSource.style.backgroundImage;
+		check1 = check1.replace(/url\("http:\/\/|:81\/stream\?.*"\)/g,'');
+		if(check1!=SettingString[16]){
+			date = new Date();
+			time = Math.floor(date.getTime() / 1000);
+			CameraViewerSource.style.backgroundImage = 'url(http://'+SettingString[16]+':81/stream?'+time+')';
+		}
+
+		//カメラビュワーの反映
+		if(SettingString[18] == 1){
+			CameraViewer.style.top = '0';
+			CVbutton1.style.top = 'initial';
+		}else if(SettingString[18] == -1){
+			CameraViewer.style.bottom = '0';
+			CVbutton1.style.top = '-2rem'
+			CVbutton1.style.bottom = 'initial';
+		}else{
+			CVbutton1.style.top = '-2rem'
+			CVbutton1.style.bottom = 'initial';
+			CameraViewer.style.top = 'initial';
+			CameraViewer.style.bottom = 'initial';
+		}
+
+		if(SettingString[17] >= 200){
+			CameraViewer.style.width = '100%';
+			CameraViewer.style.height = '100%';
+			CVbutton1.style.top = '0'
+			CVbutton1.style.bottom = 'initial';
+		}else{
+			CameraViewer.style.width = 30 * Number(SSlider11.value) / 100 + 'vw';
+			CameraViewer.style.height = 30 * Number(SSlider11.value) / 100 / 320 * 240 + 'vw';
+		}
+
+		if(SettingString[19] == 2){
+				CameraViewerSource.style.transform = 'scale(1, -1)';
+		}else if(SettingString[19] == 3){
+				CameraViewerSource.style.transform = 'scale(1, 1)';
+		}else if(SettingString[19] == 4){
+				CameraViewerSource.style.transform = 'scale(-1, 1)';
+		}else{
+				CameraViewerSource.style.transform = 'scale(-1, -1)';
+		}
+	};
+
+	CameraViewerSource.onerror = function(){ console.log("a"); };
+
+	//エラー時
+	ble.onError = function(error) {
+		if (error.toString().search(/Web Bluetooth is not supported/) != -1 || error.toString().search(/Bluetooth Low Energy not available/) != -1) {
+			//非対応ブラウザ
+			DisplayOut();
+			//ローディング画面の削除
+			Lcontroller.style.display = 'none';
+			Lsetting.style.display = 'none';
+			LTitle.style.display = 'none';
+			LNoSupport.style.display = '';
+			DestroyLoading();
+		} else {
+			if (stage == 1) {
+				//スキャン失敗 → タイトル
+				Lcontroller.style.display = 'none';
+				LTitle.style.display = '';
+				DestroyLoading();
+				stage = 0;
+				StartButton.disabled = false;
+				Status.innerHTML = '<font color="red">ペアリングに失敗しました</font><br>"bCore"を選択し、ペア設定を行ってください';
+			} else if (stage == 2) {
+				//接続失敗 → 再接続
+				if (ReconnectCount < 5) {
+					ReconnectCount++;
+					ble.connectGATT('UUID6');
+				} else {
+					Lcontroller.style.display = 'none';
+					LTitle.style.display = '';
+					DestroyLoading();
+					ble.reset();
+					stage = 0;
+					StartButton.disabled = false;
+					Status.innerHTML = '<font color="red">認証に失敗しました</font><br>正しく"bCore"を選択できているか確認してください';
+				}
+			}
+		}
+	}
+</script>
+
+</html>

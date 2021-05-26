@@ -1,0 +1,926 @@
+/*全体設定*/
+@font-face {
+  font-family: 'MainFont';
+  src: url(MainFont.ttf);
+}
+
+@font-face {
+  font-family: 'TitleFont';
+  src: url(TitleFont.ttf);
+}
+
+@font-face {
+  font-family: 'VarsionFont';
+  src: url(VarsionFont.ttf);
+}
+
+@font-face {
+  font-family: 'CodeFont';
+  src: url(CodeFont.otf);
+}
+
+@font-face {
+  font-family: 'CodeFontLight';
+  src: url(CodeFontLight.otf);
+}
+
+body {
+  background: #ffffff;
+  font-family: MainFont;
+  position: relative;
+  z-index: 0;
+  margin: 0;
+  /* 範囲選択禁止 */
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  /* スクロールバー非表示 */
+  -ms-overflow-style: none;
+  /* IE, Edge 対応 */
+  scrollbar-width: none;
+  /* Firefox 対応 */
+}
+
+body::-webkit-scrollbar {
+  /* Chrome, Safari 対応 */
+  display: none;
+}
+
+.center {
+  text-align: center;
+}
+
+:focus {
+  outline: none;
+}
+
+/*ローディング*/
+#LoadingLayer {
+  width: 100%;
+  height: 100vh;
+  font-family: MainFont;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  z-index: 60;
+  background: #323232;
+}
+
+#loadingimage {
+  width: 100vw;
+  height: 30vw;
+}
+
+#loadingimage img {
+  width: auto;
+  height: 100%;
+  animation: 2s linear infinite rotation1;
+  animation-delay: .5s;
+}
+
+#loadingText {
+  width: 100vw;
+  height: 7vw;
+  color: #ffffff;
+  font-size: 5vw;
+  text-align: center;
+}
+
+@keyframes rotation1 {
+  0% {
+    transform: rotateX(0);
+  }
+
+  100% {
+    transform: rotateX(360deg);
+  }
+}
+
+/*サポート外通知*/
+#NoSupportLayer {
+  width: 100%;
+  font-family: MainFont;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  z-index: 50;
+  background: #323232;
+  overflow: auto;
+}
+
+#NoSupportLayer a {
+  color: #ffffff;
+}
+
+#SupportList {
+  color: #ffffff;
+  text-align: center;
+  position: relative;
+}
+
+#SupportList table {
+  border-collapse: collapse;
+}
+
+#SupportList table th {
+  height: 5vh;
+  font-size: 3vh;
+  font-weight: 900;
+  vertical-align: bottom;
+}
+
+#SupportList table tr.top td {
+  padding: 5px 5px;
+  font-size: 2.5vh;
+  font-weight: 900;
+}
+
+.errorTop {
+  border-top: 0 !important;
+  border-style: none !important;
+  height: 7vh !important;
+  vertical-align: top !important;
+}
+
+#SupportList table tr.underline td {}
+
+#SupportList table td.OS {
+  font-size: 2.2vh;
+  font-weight: 900;
+}
+
+#SupportList table td {
+  font-size: 2.5vh;
+  height: 4vh;
+  width: 20vw;
+  border: 1px #ffffff solid;
+}
+
+/*タイトル画面*/
+#TitleLayer {
+  width: 100%;
+  height: 100vh;
+  font-family: MainFont;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  z-index: 40;
+  background: #f0f0f0;
+}
+
+.Guide {
+  position: absolute;
+  right: 0;
+  height: 5vw;
+  top: 0;
+  z-index: 51;
+}
+
+.Guide img {
+  height: 100%;
+  right: 1vw;
+  top: 1vw;
+  position: absolute;
+}
+
+#TitleLogo img {
+  width: 80vw;
+}
+
+#Varsion {
+  height: 7vw;
+  font-size: 5vw;
+  font-family: VarsionFont;
+  font-weight: 900;
+}
+
+#TitleButton {
+  width: 90vw;
+  text-align: center;
+}
+
+#StartButton {
+  width: 30vw;
+  outline: none;
+  margin-bottom: 1vw;
+}
+
+#StartButton:hover {
+  opacity: 0.8;
+}
+
+#status {
+  font-family: MainFont;
+  font-size: 2vw;
+}
+
+#status a {
+  color: #000000;
+}
+
+/*コントローラー*/
+#ControllerLayer {
+  width: 100%;
+  height: 100vh;
+  font-family: MainFont;
+  display: flex;
+  position: fixed;
+  z-index: 30;
+  background: #f0f0f0;
+}
+
+#ControllTop {
+  position: fixed;
+  width: 100%;
+  height: 10vh;
+  top: 0;
+  z-index: 31;
+  background: #ffffff;
+}
+
+#Cbutton5 {
+  position: absolute;
+  width: 100%;
+  height: 5vw;
+  top: 0;
+  z-index: 41;
+}
+
+#Cbutton5 img {
+  margin-top: 1vw;
+  margin-left: 1vw;
+  height: 100%;
+  width: auto;
+}
+
+.Left {
+  width: 100%;
+  height: 100%;
+  text-align: left;
+  position: absolute;
+  pointer-events: none;
+}
+
+.Center {
+  width: 100%;
+  height: 100%;
+  display: table;
+  text-align: center;
+  position: absolute;
+  pointer-events: none;
+}
+
+.Right {
+  width: 100%;
+  height: 100%;
+  text-align: right;
+  position: absolute;
+  pointer-events: none;
+}
+
+.TopButton {
+  max-width: 25vw;
+  max-height: 100%;
+  outline: none;
+  pointer-events: auto;
+}
+
+.TopButton:hover {
+  opacity: 0.6;
+}
+
+#Cbutton2 {
+}
+
+#Cbutton3 {
+}
+
+#Volt {
+  font-size: 6vw;
+  font-weight: 900;
+  font-family: MainFont;
+  padding-top: 5px;
+  display: table-cell;
+  vertical-align: middle;
+}
+
+#Controller {
+  width: 100%;
+  height: calc(100vh - 10vh);
+  top: 10vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+}
+
+#Slider {
+  position: relative;
+  pointer-events:none
+}
+
+#HorizontalSlider {
+  position: absolute;
+}
+
+#Hslider {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto;
+}
+
+#VerticalSlider {
+  position: absolute;
+}
+
+#Vslider {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto;
+  -webkit-transform: rotate(-90deg);
+  -moz-transform: rotate(-90deg);
+  -o-transform: rotate(-90deg);
+  transform: rotate(-90deg);
+}
+
+/* コントローラースライダーのバー */
+#Slider input {
+  -webkit-appearance: none;
+  appearance: none;
+  cursor: pointer;
+  outline: none;
+  height: 3vw;
+  width: 100%;
+  background: #ff8a8a;
+  border-radius: 10px;
+  border: solid .5vw #ffffff;
+  pointer-events: none;
+}
+
+/* コントローラースライダーのつまみ */
+#Slider input::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  background: #C2181F;
+  width: 10vw;
+  height: 10vw;
+  border-radius: 50%;
+  box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.15);
+  pointer-events: auto;
+}
+
+#Slider input::-moz-range-thumb {
+  background: #C2181F;
+  width: 10vw;
+  height: 10vw;
+  border-radius: 50%;
+  box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.15);
+  border: none;
+  pointer-events: auto;
+}
+
+#Slider input::-moz-focus-outer {
+  border: 0;
+}
+
+#Slider input:active::-webkit-slider-thumb {
+  box-shadow: 0px 5px 10px -2px rgba(0, 0, 0, 0.3);
+}
+
+/*カメラ*/
+#CameraViewer {
+  position: absolute;
+  width: 30vw;
+  height: calc(30vw / 320 * 240);
+  background-image: url(CameraLostConnecton.png);
+  background-size: cover;
+  background-position: center;
+}
+
+#CameraViewerSource {
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+}
+
+#CVbutton1 {
+  position: absolute;
+  width: 100%;
+  height: 2rem;
+  border: none;
+  background-color: #000;
+  font-family: MainFont;
+  font-size: 1rem;
+  color: #fff;
+}
+
+#CVbutton1:hover{
+  cursor: pointer;
+  background-color: #333;
+}
+
+/*設定*/
+#SettingLayer {
+  width: 100%;
+  height: 100vh;
+  font-family: MainFont;
+  display: flex;
+  position: fixed;
+  z-index: 35;
+  background: #f0f0f0;
+}
+
+#SettingList {
+  height: 100%;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto;
+  overflow-y: scroll;
+  -ms-overflow-style: none;
+  /* IE, Edge 対応 */
+  scrollbar-width: none;
+  /* Firefox 対応 */
+}
+
+#SettingList::-webkit-scrollbar {
+  /* Chrome, Safari 対応 */
+  display: none;
+}
+
+#SettingTable {}
+
+#SettingTable td {
+  height: 3rem;
+}
+
+.col1 {
+  width: 20vw;
+  font-size: 1.5rem;
+}
+
+.col2 {
+  width: 10vw;
+  font-weight: 900;
+  font-size: 1.5rem;
+}
+
+.col3 {
+  width: 50vw;
+}
+
+.col4 {
+}
+
+.col5 {
+  text-align: center;
+}
+
+.row1 {
+  height: 10vh;
+  font-size: 3rem;
+  font-family: TitleFont;
+  text-align: center;
+  vertical-align: bottom;
+}
+
+.row2 {
+  font-size: 1.7rem;
+  font-family: TitleFont;
+  text-align: left;
+  vertical-align: bottom;
+}
+
+.row3 {
+  vertical-align: middle;
+  height: 15vh;
+}
+
+.row4 {
+  height: 1vh;
+  font-size: 1.7rem;
+  font-family: TitleFont;
+  text-align: left;
+  vertical-align: bottom;
+}
+
+.keySet {
+  float: left;
+  width: 20%;
+  font-size: 1.5rem;
+  font-weight: 900;
+  text-align: center;
+}
+
+#Sbutton1 {
+  width: 13rem !important;
+  height: auto !important;
+  border: none !important;
+  pointer-events: auto !important;
+}
+
+#Sbutton1:hover {
+  opacity: 0.8 !important;
+}
+
+.SettingText {
+  width: 100%;
+  border: none;
+  background-color: initial;
+  font-size: 1.5rem;
+  font-weight: 900;
+  text-align: center;
+}
+
+/* 設定スライダーのバー */
+.SettingSlider {
+  -webkit-appearance: none;
+  appearance: none;
+  cursor: pointer;
+  outline: none;
+  height: 8px;
+  width: 100%;
+  background: #ff8a8a;
+  border-radius: 10px;
+  border: solid 2px #ffffff;
+  pointer-events: none;
+}
+
+.col4 > .SettingSlider {
+  width: 4rem;
+}
+
+/* 設定スライダーのつまみ */
+.SettingSlider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  background: #C2181F;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.15);
+  pointer-events: auto;
+}
+
+.SettingSlider::-moz-range-thumb {
+  background: #C2181F;
+  width: 6vh;
+  height: 6vh;
+  border-radius: 50%;
+  box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.15);
+  border: none;
+  pointer-events: auto;
+}
+
+.SettingSlider::-moz-focus-outer {
+  border: 0;
+}
+
+.SettingSlider:active::-webkit-slider-thumb {
+  box-shadow: 0px 5px 10px -2px rgba(0, 0, 0, 0.3);
+}
+
+/* コマンドツール */
+#Cbutton1 {}
+
+#Cbutton4 {}
+
+#CommandLayer {
+  width: 100%;
+  height: 100vh;
+  font-family: MainFont;
+  display: flex;
+  position: fixed;
+  z-index: 20;
+  background: #f0f0f0;
+}
+
+#Command {
+  width: 100%;
+  height: 100%;
+}
+
+#LeftGroup {
+  width: 20%;
+  height: 100%;
+  float: left;
+  position: relative;
+}
+
+#CenterGroup {
+  width: 60%;
+  height: 100%;
+  float: left;
+  position: relative;
+}
+
+#RightGroup {
+  width: 20%;
+  height: 100%;
+  float: left;
+}
+
+#CommandTop {
+  width: 100%;
+  height: 8%;
+  position: relative;
+  background-color: #ffffff;
+}
+
+#TopButtonGroup {
+  width: 90%;
+  height: 100%;
+  position: absolute;
+  right: 0;
+  left: 0;
+  margin: auto;
+  float: left;
+  z-index: 30;
+  overflow: hidden;
+}
+
+#TopButtonL {
+  position: absolute;
+  height: 100%;
+  left: 0;
+}
+
+#TopButtonR {
+  position: absolute;
+  height: 100%;
+  right: 0;
+}
+
+#Border1 {
+  height: 100%;
+  width: 20px;
+  right: -10px;
+  cursor: col-resize;
+  position: absolute;
+  z-index: 21;
+}
+
+#Border1Line {
+  height: 100%;
+  left: 0;
+  position: absolute;
+  border-left: solid 1px #000000;
+  z-index: 22;
+  pointer-events: none;
+}
+
+#Border2 {
+  height: 100%;
+  width: 20px;
+  left: -10px;
+  cursor: col-resize;
+  position: absolute;
+  z-index: 21;
+}
+
+#Border2Line {
+  height: 100%;
+  right: 0;
+  position: absolute;
+  border-right: solid 1px #000000;
+  z-index: 22;
+  pointer-events: none;
+}
+
+.TextBottom {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  text-align: center;
+}
+
+#Reference {
+  width: 100%;
+  height: 92%;
+  font-family: CodeFont;
+  overflow-y: scroll;
+  -ms-overflow-style: none;
+  /* IE, Edge 対応 */
+  scrollbar-width: none;
+  /* Firefox 対応 */
+}
+
+#Reference::-webkit-scrollbar {
+  /* Chrome, Safari 対応 */
+  display: none;
+}
+
+#CommandArea {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  position: relative;
+}
+
+#CommandButton {
+  position: relative;
+  height: 14%;
+}
+
+#CommandButtonMiddle {
+  position: absolute;
+  height: 10vh;
+  width: 24vh;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+
+#CommandStartButton {
+  position: absolute;
+  right: 0;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  outline: none;
+}
+
+#CommandStopButton {
+  position: absolute;
+  left: 0;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  outline: none;
+}
+
+#CommandStartButton:hover {
+  opacity: 0.6;
+}
+
+#CommandStopButton:hover {
+  opacity: 0.6;
+}
+
+#Editer {
+  position: absolute;
+  height: 85%;
+  margin: 10px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+#CommandArea textarea {
+  resize: none;
+  font-family: CodeFont;
+  font-size: 1rem;
+  width: 100%;
+  height: 100%;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -o-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.ReferenceCode {
+  font-weight: 900;
+  padding-top: 1vh;
+  padding-left: 3%;
+  padding-bottom: 1vh;
+  border-bottom: solid 0.1vh #000000;
+}
+
+value {
+  color: #da171f;
+}
+
+.ReferenceGuide {
+  font-weight: 400;
+  padding-top: 1vh;
+  padding-left: 4%;
+  padding-bottom: 1vh;
+}
+
+.ReferenceExample {
+  font-weight: 400;
+  padding-top: 1vh;
+  padding-left: 6%;
+  padding-bottom: 1vh;
+}
+
+.Chapter {
+  text-align: center;
+  margin-top: 1.8vh;
+  margin-bottom: 0.5vh;
+  font-family: TitleFont;
+  border-bottom: solid 0.3vh #000000;
+}
+
+#ConsoleArea {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+#ConsoleTitle {
+  position: absolute;
+  width: 100%;
+  height: 7vh;
+  font-family: TitleFont;
+  font-size: 2vw;
+  white-space: nowrap;
+  border-bottom: solid 0.3vh #000000;
+}
+
+#Console {
+  position: absolute;
+  width: 100%;
+  height: 93vh;
+  top: 7vh;
+  font-family: CodeFont;
+  overflow-y: scroll;
+}
+
+.Consolevalue {
+  font-size: 1.7vh;
+  font-family: CodeFontLight;
+  padding-left: 4vh;
+  line-height: 2vh;
+  background: url(Right-Arrow.png) no-repeat;
+  background-size: 4vh 2vh;
+  white-space: nowrap;
+}
+
+#Console p {
+  margin: 0;
+  margin-top: 0.5vh;
+}
+
+#Console::-webkit-scrollbar {
+  height: 2vh;
+}
+
+#Console::-webkit-scrollbar-track {
+  background: #e6e6e6;
+}
+
+#Console::-webkit-scrollbar-thumb {
+  background: #8b8b8b;
+}
+
+#Console::-webkit-scrollbar:vertical {
+  display: none;
+}
+
+red {
+  color: #ff000a;
+}
+
+@media screen and (max-width:1000px) {
+
+  /* 設定画面を見やすくする */
+  #SettingTable th, #SettingTable td {
+    display: block;
+    clear: both;
+  }
+
+  #SettingTable td {
+    height: 2rem;
+    padding-top:15px;
+  }
+
+  .col1 {
+    display: inline-block !important;
+    width: initial;
+  }
+
+  .col2 {
+    display: inline-block !important;
+    width: initial;
+    float: right;
+  }
+
+  .col3 {
+    width: 75vw;
+    padding-bottom: 50px;
+  }
+
+  .col4 {
+    width: 5rem;
+  }
+
+  #SettingTitle{
+    padding-top: 3rem;
+  }
+}
