@@ -74,17 +74,20 @@
 		</div>
 	</div>
 	<div id='TitleLayer'>
-		<div id='Cbutton5'><a href="command-standalone.html" id="ModeChangeButton"><img src="image/Command.png" alt="コマンド操作"></a></div>
+		<div id='Cbutton5'><a href="command-controle.html" id="ModeChangeButton"><img src="image/Command.png" alt="コマンド操作"></a></div>
 		<div class="Guide" id='Guide1'></div>
 		<div class='center'>
 			<div id='TitleLogo'>
+				<div id='SubTitle'>Camera Viewer</div>
 				<img src='image/TitleLogo.png'>
 			</div>
-			<div id='Varsion'>β.1.1.1 - Camera Controle</div>
 			<div id='TitleButton'>
 				<input type="image" id='StartButton' src='image/StartButton.png'>
 				<div id='status'></div>
 			</div>
+		</div>
+		<div id='TitleBottom'>
+			<div id='Varsion'>v.1.1.1 - © 2021 PLEN Project Company Inc.</div>
 		</div>
 	</div>
 	<div id='FullscreenArea'>
@@ -760,7 +763,7 @@
 		}
 	}
 
-	//bCore切断時
+	//ESP_Racer切断時
 	ble.onDisconnect = function() {
 		if(stage == 5){
 
@@ -1887,7 +1890,7 @@
 				DestroyLoading();
 				stage = 0;
 				StartButton.disabled = false;
-				Status.innerHTML = '<font color="red">ペアリングに失敗しました</font><br>"bCore"を選択し、ペア設定を行ってください';
+				Status.innerHTML = '<font color="red">ペアリングに失敗しました</font><br>"ESP_Racer"を選択し、ペア設定を行ってください';
 			} else if (stage == 2) {
 				//接続失敗 → 再接続
 				if (ReconnectCount < 5) {
@@ -1900,7 +1903,7 @@
 					ble.reset();
 					stage = 0;
 					StartButton.disabled = false;
-					Status.innerHTML = '<font color="red">認証に失敗しました</font><br>正しく"bCore"を選択できているか確認してください';
+					Status.innerHTML = '<font color="red">認証に失敗しました</font><br>正しく"ESP_Racer"を選択できているか確認してください';
 				}
 			}
 		}

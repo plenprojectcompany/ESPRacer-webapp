@@ -7,7 +7,7 @@
 	<meta name="robots" content="noindex">
 	<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
 	<title>bDriverMX-CC</title>
-	<meta name="description" content="bDriverMXのWebAppコマンドコントロール版 Android,Windows,Macに対応 JavaScriptでbCoreを制御できます" />
+	<meta name="description" content="bDriverMXのWebAppコマンドコントロール版 Android,Windows,Macに対応 JavaScriptでESP_Racerを制御できます" />
 	<link rel="icon" href="image/icon16.png" sizes="16x16" type="image/png" />
 	<link rel="icon" href="image/icon32.png" sizes="32x32" type="image/png" />
 	<link rel="icon" href="image/icon48.png" sizes="48x48" type="image/png" />
@@ -79,13 +79,16 @@
 		<div class="Guide" id='Guide1'></div>
 		<div class='center'>
 			<div id='TitleLogo'>
+				<div id='SubTitle'>Command Controle</div>
 				<img src='image/TitleLogo.png'>
 			</div>
-			<div id='Varsion'>v.1.1.1 - Command Controle</div>
 			<div id='TitleButton'>
 				<input type="image" id='StartButton' src='image/StartButton.png'>
 				<div id='status'></div>
 			</div>
+		</div>
+		<div id='TitleBottom'>
+			<div id='Varsion'>v.1.1.1 - © 2021 PLEN Project Company Inc.</div>
 		</div>
 	</div>
 	<div id='FullscreenArea'>
@@ -783,9 +786,9 @@
 		if(stage == 4){
 			if(BLEerrorFlag){
 				if(CommandNow){
-					Log('bCoreと接続しました');
+					Log('ESP_Racerと接続しました');
 				}else{
-					Log('bCoreと接続しました<br><br>');
+					Log('ESP_Racerと接続しました<br><br>');
 				}
 			}
 			BLEerrorFlag = false;
@@ -797,11 +800,11 @@
 		}
 	}
 
-	//bCore切断時
+	//ESP_Racer切断時
 	ble.onDisconnect = function() {
 		if(stage == 4){
 			if(BLEerrorFlag == false){
-				Log('<red>bCoreから切断されました！</red><br>再接続中...');
+				Log('<red>ESP_Racerから切断されました！</red><br>再接続中...');
 			}
 			BLEerrorFlag = true;
 		}else{
@@ -1130,7 +1133,7 @@
 				DestroyLoading();
 				stage = 0;
 				StartButton.disabled = false;
-				Status.innerHTML = '<font color="red">ペアリングに失敗しました</font><br>"bCore"を選択し、ペア設定を行ってください';
+				Status.innerHTML = '<font color="red">ペアリングに失敗しました</font><br>"ESP_Racer"を選択し、ペア設定を行ってください';
 			} else if (stage == 2) {
 				//接続失敗  →  再接続
 				if (ReconnectCount < 5) {
@@ -1143,7 +1146,7 @@
 					ble.reset();
 					stage = 0;
 					StartButton.disabled = false;
-					Status.innerHTML = '<font color="red">認証に失敗しました</font><br>正しく"bCore"を選択できているか確認してください';
+					Status.innerHTML = '<font color="red">認証に失敗しました</font><br>正しく"ESP_Racer"を選択できているか確認してください';
 				}
 			}
 		}
@@ -1259,7 +1262,7 @@
 			var Time = '[' + min + '分' + Sec + '秒]';
 
 			if(BLEerrorFlag){
-				Log(Time + ' - 処理中断 (<red>bCoreと未接続</red>)<br><br>');
+				Log(Time + ' - 処理中断 (<red>ESP_Racerと未接続</red>)<br><br>');
 			}else{
 				Log(Time + ' - 処理中断<br><br>');
 			}
@@ -1331,10 +1334,10 @@
 			//MicroBit関連
 			var RoopFlag = true;
 			while (RoopFlag) {
-				if (ScriptList[i].match(/bcore\.value.\(.*?\)/g)) {
+				if (ScriptList[i].match(/ESP_Racer\.value.\(.*?\)/g)) {
 					//var ValueCheck1 = ScriptList[i].match(/(?<=).*?(?=)/g);
-					var ValueCheck1 = GetRegex(1, "bcore\\.value.\\(", "\\)", ScriptList[i], "");
-					var ValueCheck2 = ScriptList[i].match(/bcore\.value.\(.*?\)/);
+					var ValueCheck1 = GetRegex(1, "ESP_Racer\\.value.\\(", "\\)", ScriptList[i], "");
+					var ValueCheck2 = ScriptList[i].match(/ESP_Racer\.value.\(.*?\)/);
 					if (ValueCheck1) {
 						ScriptList[i] = ScriptList[i].replace(ValueCheck2[0], ValueCheck1);
 					} else {
@@ -1344,8 +1347,8 @@
 					RoopFlag = false;
 				}
 			}
-			if (ScriptCheckList[i].match(/^bcore[.]/g)) {
-				ScriptList[i] = ScriptList[i].replace(/bcore[.]/g, '');
+			if (ScriptCheckList[i].match(/^ESP_Racer[.]/g)) {
+				ScriptList[i] = ScriptList[i].replace(/ESP_Racer[.]/g, '');
 			}
 			if (ScriptCheckList[i].match(/^basic[.]showString/g)) {
 				ScriptList[i] = ScriptList[i].replace(/basic[.]showString/g, 'Log');
@@ -1424,7 +1427,7 @@
 			var Time = '[' + min + '分' + Sec + '秒]';
 
 			if(BLEerrorFlag){
-				Log(Time + ' - 処理開始 (<red>bCoreと未接続</red>)');
+				Log(Time + ' - 処理開始 (<red>ESP_Racerと未接続</red>)');
 			}else{
 				Log(Time + ' - 処理開始');
 			}
@@ -1536,7 +1539,7 @@
 		var Time = '[' + min + '分' + Sec + '秒]';
 
 		if(BLEerrorFlag){
-			Log(Time + ' - 処理終了 (<red>bCoreと未接続</red>)<br><br>');
+			Log(Time + ' - 処理終了 (<red>ESP_Racerと未接続</red>)<br><br>');
 		}else{
 			Log(Time + ' - 処理終了<br><br>');
 		}

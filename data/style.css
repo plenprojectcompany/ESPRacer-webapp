@@ -24,6 +24,11 @@
   src: url(CodeFontLight.otf);
 }
 
+@font-face {
+  font-family: 'DIN';
+  src: url(din1451alt_G.ttf);
+}
+
 body {
   background: #ffffff;
   font-family: MainFont;
@@ -187,14 +192,35 @@ body::-webkit-scrollbar {
   position: absolute;
 }
 
+#TitleLogo {
+  position:relative;
+}
+
 #TitleLogo img {
-  width: 70vw;
+  width: 65vw;
+}
+
+#TitleBottom {
+  text-align: center;
+  position: absolute;
+  bottom: 0;
+}
+
+#SubTitle {
+  font-size: 4vw;
+  height: 4vw;
+  font-family: DIN;
+  position:absolute;
+  bottom:15px;
+  left: 0;
+  right: 0;
+  margin: auto;
 }
 
 #Varsion {
-  height: 7vw;
-  font-size: 5vw;
-  font-family: VarsionFont;
+  font-size: 2vw;
+  height: 4vw;
+  font-family: MainFont;
   font-weight: 900;
 }
 
@@ -361,7 +387,7 @@ body::-webkit-scrollbar {
   outline: none;
   height: 3vw;
   width: 100%;
-  background: #ff8a8a;
+  background: #689c5e;
   border-radius: 10px;
   border: solid .5vw #ffffff;
   pointer-events: none;
@@ -370,7 +396,7 @@ body::-webkit-scrollbar {
 /* コントローラースライダーのつまみ */
 #Slider input::-webkit-slider-thumb {
   -webkit-appearance: none;
-  background: #C2181F;
+  background: #403e49;
   width: 10vw;
   height: 10vw;
   border-radius: 50%;
@@ -379,7 +405,7 @@ body::-webkit-scrollbar {
 }
 
 #Slider input::-moz-range-thumb {
-  background: #C2181F;
+  background: #403e49;
   width: 10vw;
   height: 10vw;
   border-radius: 50%;
@@ -552,7 +578,7 @@ body::-webkit-scrollbar {
   outline: none;
   height: 8px;
   width: 100%;
-  background: #ff8a8a;
+  background: #689c5e;
   border-radius: 10px;
   border: solid 2px #ffffff;
   pointer-events: none;
@@ -565,7 +591,7 @@ body::-webkit-scrollbar {
 /* 設定スライダーのつまみ */
 .SettingSlider::-webkit-slider-thumb {
   -webkit-appearance: none;
-  background: #C2181F;
+  background: #403e49;
   width: 3rem;
   height: 3rem;
   border-radius: 50%;
@@ -574,7 +600,7 @@ body::-webkit-scrollbar {
 }
 
 .SettingSlider::-moz-range-thumb {
-  background: #C2181F;
+  background: #403e49;
   width: 6vh;
   height: 6vh;
   border-radius: 50%;
