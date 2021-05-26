@@ -169,7 +169,7 @@ body::-webkit-scrollbar {
   align-items: center;
   position: fixed;
   z-index: 40;
-  background: #f0f0f0;
+  background: #f3ece6;
 }
 
 .Guide {
@@ -230,7 +230,7 @@ body::-webkit-scrollbar {
   display: flex;
   position: fixed;
   z-index: 30;
-  background: #f0f0f0;
+  background: #f3ece6;
 }
 
 #ControllTop {
@@ -437,7 +437,7 @@ body::-webkit-scrollbar {
   display: flex;
   position: fixed;
   z-index: 35;
-  background: #f0f0f0;
+  background: #f3ece6;
 }
 
 #SettingList {
@@ -603,7 +603,7 @@ body::-webkit-scrollbar {
   display: flex;
   position: fixed;
   z-index: 20;
-  background: #f0f0f0;
+  background: #f3ece6;
 }
 
 #Command {
