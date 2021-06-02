@@ -3,7 +3,7 @@
 
 ## ESPRacer for WebApp
 
-[bDriverMX for WebApp](https://plenprojectcompany.github.io/ESPRacer-webapp/)
+[ESPRacer for WebApp](https://plenprojectcompany.github.io/ESPRacer-webapp/)
 
 ## Copyright (c) 2021,
 - [Isaki](https://github.com/IsakiMatsubara)
