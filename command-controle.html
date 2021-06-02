@@ -679,8 +679,13 @@
 		//サーボ初期位置へ
 		ServoControll(100);
 
-		GuideButton.innerHTML = '<a href="pdf/' + Device + 'Guide.pdf" target="_blank"><img src="image/Question.png" alt="説明書"></a>';
-		SettingGuideButton.innerHTML = '<a href="pdf/' + Device + 'Setting.pdf" target="_blank"><img src="image/Question.png" alt="設定ガイド"></a>';
+		if (Device == 'PC'){
+			GuideButton.innerHTML = '<a href="pdf/PC-Guide.pdf" target="_blank"><img src="image/Question.png" alt="説明書"></a>';
+			SettingGuideButton.innerHTML = '<a href="pdf/PC-Setting.pdf" target="_blank"><img src="image/Question.png" alt="設定ガイド"></a>';
+		}else{
+			GuideButton.innerHTML = '<a href="pdf/Mobile-Guide.pdf" target="_blank"><img src="image/Question.png" alt="説明書"></a>';
+			SettingGuideButton.innerHTML = '<a href="pdf/Mobile-Setting.pdf" target="_blank"><img src="image/Question.png" alt="設定ガイド"></a>';
+		}
 
 		if (Device == 'Android' || Device == 'ios') {
 			//hoverを無効にする
@@ -695,7 +700,7 @@
 		}
 
 		if (DisplayGPSwarning) {
-			Status.innerHTML = '<font color="red">初回利用時は位置情報の権限設定をご確認ください</font><br><a href="pdf/Permission' + Device + Browser + '.pdf" target="_blank">ブラウザ権限の設定手順</a>';
+			//Status.innerHTML = '<font color="red">初回利用時は位置情報の権限設定をご確認ください</font><br><a href="pdf/Permission' + Device + Browser + '.pdf" target="_blank">ブラウザ権限の設定手順</a>';
 		}
 
 		if (Support) {
