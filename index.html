@@ -5,8 +5,8 @@
 	<meta charset="utf-8" />
 	<meta name="robots" content="noindex">
 	<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
-	<title>bDriverMX</title>
-	<meta name="description" content="bDriverMXのWebApp版 Android,Windows,Macに対応" />
+	<title>ESPレーザー</title>
+	<meta name="description" content="ESPレーザーのWebApp版 Android,Windows,Macに対応" />
 	<link rel="icon" href="image/icon16.png" sizes="16x16" type="image/png" />
 	<link rel="icon" href="image/icon32.png" sizes="32x32" type="image/png" />
 	<link rel="icon" href="image/icon48.png" sizes="48x48" type="image/png" />
@@ -105,7 +105,7 @@
 					</div>
 				</div>
 				<div class='Right'>
-					<input type="image" class='TopButton' id='Cbutton2' src='image/LightOn.png'><input type="image" class='TopButton' id='Cbutton3' src='image/GyroOn.png'><input type="image" class='TopButton' id='Cbutton4' src='image/FullscreenOn.png'>
+					<input type="image" class='TopButton' id='Cbutton2' src='image/Light-Off.png'><input type="image" class='TopButton' id='Cbutton3' src='image/Gyro-Off.png'><input type="image" class='TopButton' id='Cbutton4' src='image/Fullscreen-On.png'>
 				</div>
 			</div>
 			<div id='Controller'>
@@ -739,7 +739,7 @@
 		VSlider.value = 100;
 		PWM(100);
 		Servo(100);
-		CButton3.setAttribute('src', 'image/GyroOn.png');
+		CButton3.setAttribute('src', 'image/Gyro-Off.png');
 		Lsetting.style.display = '';
 		//Lcontroller.style.display = 'none';
 	});
@@ -749,11 +749,11 @@
 		if (LightActive) {
 			LightActive = false;
 			PortValue = 0;
-			CButton2.setAttribute('src', 'image/LightOn.png');
+			CButton2.setAttribute('src', 'image/Light-Off.png');
 		} else {
 			LightActive = true;
 			PortValue = 3;
-			CButton2.setAttribute('src', 'image/LightOff.png');
+			CButton2.setAttribute('src', 'image/Light-On.png');
 		}
 	});
 
@@ -773,12 +773,12 @@
 			HSlider.disabled = false;
 			HSlider.value = 100;
 			Servo(100);
-			CButton3.setAttribute('src', 'image/GyroOn.png');
+			CButton3.setAttribute('src', 'image/Gyro-Off.png');
 		} else {
 			RotateBefore = true;
 			GyroActive = true;
 			HSlider.disabled = true;
-			CButton3.setAttribute('src', 'image/GyroOff.png');
+			CButton3.setAttribute('src', 'image/Gyro-On.png');
 		}
 	});
 
@@ -817,10 +817,10 @@
 	document.onfullscreenchange = document.onmozfullscreenchange = document.onwebkitfullscreenchange = document.onmsfullscreenchange = function(event) {
 		if (Fullscreen) {
 			Fullscreen = false;
-			CButton4.setAttribute('src', 'image/FullscreenOn.png');
+			CButton4.setAttribute('src', 'image/Fullscreen-On.png');
 		} else {
 			Fullscreen = true;
-			CButton4.setAttribute('src', 'image/FullscreenOff.png');
+			CButton4.setAttribute('src', 'image/Fullscreen-Off.png');
 		}
 	};
 
@@ -1316,7 +1316,7 @@
 		GyroActive = false;
 		HSlider.disabled = false;
 		HSlider.value = 100;
-		CButton3.setAttribute('src', 'image/GyroOn.png');
+		CButton3.setAttribute('src', 'image/Gyro-Off.png');
 	});
 	SSlider6.addEventListener('input', function() {
 		Lsetting.style.opacity = '0.8';
@@ -1571,7 +1571,7 @@
 		if (RotateBefore) {
 			GyroActive = true;
 			HSlider.disabled = true;
-			CButton3.setAttribute('src', 'image/GyroOff.png');
+			CButton3.setAttribute('src', 'image/Gyro-On.png');
 		}
 
 		//Lcontroller.style.display = '';

@@ -6,8 +6,8 @@
 	<meta charset="utf-8" />
 	<meta name="robots" content="noindex">
 	<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
-	<title>bDriverMX-CC</title>
-	<meta name="description" content="bDriverMXのWebAppコマンドコントロール版 Android,Windows,Macに対応 JavaScriptでESP_Racerを制御できます" />
+	<title>ESPレーザー CC</title>
+	<meta name="description" content="ESPレーザーのWebAppコマンドコントロール版 Android,Windows,Macに対応 JavaScriptでESP_Racerを制御できます" />
 	<link rel="icon" href="image/icon16.png" sizes="16x16" type="image/png" />
 	<link rel="icon" href="image/icon32.png" sizes="32x32" type="image/png" />
 	<link rel="icon" href="image/icon48.png" sizes="48x48" type="image/png" />
@@ -105,7 +105,7 @@
 								<input type="image" class='TopButton' id='Cbutton1' src='image/Setting.png'>
 							</div>
 							<div id='TopButtonR'>
-								<input type="image" class='TopButton' id='Cbutton4' src='image/FullscreenOn.png'>
+								<input type="image" class='TopButton' id='Cbutton4' src='image/Fullscreen-On.png'>
 							</div>
 						</div>
 					</div>
@@ -888,10 +888,10 @@
 	document.onfullscreenchange = document.onmozfullscreenchange = document.onwebkitfullscreenchange = document.onmsfullscreenchange = function(event) {
 		if (Fullscreen) {
 			Fullscreen = false;
-			CButton4.setAttribute('src', 'image/FullscreenOn.png');
+			CButton4.setAttribute('src', 'image/Fullscreen-On.png');
 		} else {
 			Fullscreen = true;
-			CButton4.setAttribute('src', 'image/FullscreenOff.png');
+			CButton4.setAttribute('src', 'image/Fullscreen-Off.png');
 		}
 	};
 

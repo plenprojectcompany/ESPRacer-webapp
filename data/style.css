@@ -333,6 +333,8 @@ body::-webkit-scrollbar {
   max-height: 100%;
   outline: none;
   pointer-events: auto;
+  padding-left:10px;
+  padding-right:10px;
 }
 
 .TopButton:hover {
