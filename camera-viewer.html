@@ -766,7 +766,7 @@
 		}
 	}
 
-	//ESP_Racer切断時
+	//ESPRacer切断時
 	ble.onDisconnect = function() {
 		if(stage == 5){
 
@@ -1893,7 +1893,7 @@
 				DestroyLoading();
 				stage = 0;
 				StartButton.disabled = false;
-				Status.innerHTML = '<font color="red">ペアリングに失敗しました</font><br>"ESP_Racer"を選択し、ペア設定を行ってください';
+				Status.innerHTML = '<font color="red">ペアリングに失敗しました</font><br>"ESPRacer"を選択し、ペア設定を行ってください';
 			} else if (stage == 2) {
 				//接続失敗 → 再接続
 				if (ReconnectCount < 5) {
@@ -1906,7 +1906,7 @@
 					ble.reset();
 					stage = 0;
 					StartButton.disabled = false;
-					Status.innerHTML = '<font color="red">認証に失敗しました</font><br>正しく"ESP_Racer"を選択できているか確認してください';
+					Status.innerHTML = '<font color="red">認証に失敗しました</font><br>正しく"ESPRacer"を選択できているか確認してください';
 				}
 			}
 		}
