@@ -63,7 +63,7 @@ body::-webkit-scrollbar {
 /*ローディング*/
 #LoadingLayer {
   width: 100%;
-  height: 100vh;
+  height: 100%;
   font-family: MainFont;
   display: flex;
   justify-content: center;
@@ -106,6 +106,7 @@ body::-webkit-scrollbar {
 /*サポート外通知*/
 #NoSupportLayer {
   width: 100%;
+  height: 100%;
   font-family: MainFont;
   display: flex;
   justify-content: center;
@@ -167,7 +168,7 @@ body::-webkit-scrollbar {
 /*タイトル画面*/
 #TitleLayer {
   width: 100%;
-  height: 100vh;
+  height: 100%;
   font-family: MainFont;
   display: flex;
   justify-content: center;
@@ -271,7 +272,7 @@ body::-webkit-scrollbar {
 /*コントローラー*/
 #ControllerLayer {
   width: 100%;
-  height: 100vh;
+  height: 100%;
   font-family: MainFont;
   display: flex;
   position: fixed;
@@ -480,7 +481,7 @@ body::-webkit-scrollbar {
 /*設定*/
 #SettingLayer {
   width: 100%;
-  height: 100vh;
+  height: 100%;
   font-family: MainFont;
   display: flex;
   position: fixed;
@@ -646,7 +647,7 @@ body::-webkit-scrollbar {
 
 #CommandLayer {
   width: 100%;
-  height: 100vh;
+  height: 100%;
   font-family: MainFont;
   display: flex;
   position: fixed;
