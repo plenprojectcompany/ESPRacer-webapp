@@ -20,11 +20,9 @@
 
 <body>
 	<div id='LoadingLayer'>
-		<div class='center'>
-			<div id='loadingimage'>
-				<img src="image/Loading.png" width="250px" id="LoadingImageSource">
-			</div>
-			<div id='loadingText'></div>
+		<div id='LoadingImage'>
+			<img src="image/Loading.png" id='LoadingImageSource'>
+			<div id='LoadingText'></div>
 		</div>
 	</div>
 	<div id='NoSupportLayer'>
@@ -32,7 +30,7 @@
 			<div id='SupportList'>
 				<table align="center">
 					<tr>
-						<td colspan="2" class='errorTop'><img src="image/Error.png" width="250px"></td>
+						<td colspan="2" class='errorTop'><img src="image/Error.png" id="ErrorImage"></td>
 					</tr>
 					<tr>
 						<td colspan="2" class='errorTop'>ご利用のブラウザには対応しておりません<br>以下のサポートリストをご確認ください</td>
@@ -234,7 +232,7 @@
 	const LNoSupportContent = document.getElementById('NoSupportContent');
 	const LTitle = document.getElementById('TitleLayer');
 	const Lcontroller = document.getElementById('ControllerLayer');
-	const LoadingStatus = document.getElementById('loadingText');
+	const LoadingStatus = document.getElementById('LoadingText');
 	const Lsetting = document.getElementById('SettingLayer');
 	const ble = new BlueJelly();
 	const StartButton = document.getElementById('StartButton');

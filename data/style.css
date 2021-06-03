@@ -75,26 +75,26 @@ body::-webkit-scrollbar {
   background: #323232;
 }
 
-#loadingimage {
+#LoadingImage {
   -webkit-transform: translate3d(0, 0, 1px);
 	transform: translate3d(0, 0, 1px);
   width: 100vw;
-  height: 30vw;
+  height: 37vw;
+  text-align: center;
 }
 
-#loadingimage img {
-  width: auto;
-  height: 100%;
+#LoadingImage img {
+  width: 30vw;
+  height: auto;
   animation: 2s linear infinite rotation1;
   animation-delay: .5s;
 }
 
-#loadingText {
+#LoadingText {
   width: 100vw;
   height: 7vw;
   color: #ffffff;
   font-size: 5vw;
-  text-align: center;
 }
 
 @keyframes rotation1 {
@@ -115,10 +115,13 @@ body::-webkit-scrollbar {
   display: flex;
   justify-content: center;
   align-items: center;
-  position: fixed;
   z-index: 50;
   background: #323232;
   overflow: auto;
+}
+
+#ErrorImage{
+    width: 30vh;
 }
 
 #NoSupportLayer a {
