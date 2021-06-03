@@ -83,7 +83,7 @@ body::-webkit-scrollbar {
   height: 100%;
   animation: 2s linear infinite rotation1;
   animation-delay: .5s;
-  transform: translateZ(10px);
+  transform: translateZ(1000px);
 }
 
 #loadingText {
