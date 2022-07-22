@@ -45,6 +45,14 @@ body {
   /* IE, Edge 対応 */
   scrollbar-width: none;
   /* Firefox 対応 */
+  
+  overflow: hidden;
+}
+
+#container {
+  height: 100vh;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
 body::-webkit-scrollbar {
