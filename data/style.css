@@ -139,7 +139,7 @@ body::-webkit-scrollbar {
 }
 
 #DisplayRotationImage img {
-  width: 30vw;
+  width: 50vh;
   height: auto;
   animation: 2s linear infinite rotation2;
   animation-delay: .5s;
@@ -149,7 +149,7 @@ body::-webkit-scrollbar {
   width: 100vw;
   height: 7vw;
   color: #ffffff;
-  font-size: 5vw;
+  font-size: 7vh;
 }
 
 @keyframes rotation2 {
