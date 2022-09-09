@@ -134,12 +134,12 @@ body::-webkit-scrollbar {
   -webkit-transform: translate3d(0, 0, 1px);
 	transform: translate3d(0, 0, 1px);
   width: 100vw;
-  height: 37vw;
+  height: 47vh;
   text-align: center;
 }
 
 #DisplayRotationImage img {
-  width: 50vh;
+  width: 40vh;
   height: auto;
   animation: 2s linear infinite rotation2;
   animation-delay: .5s;
@@ -147,7 +147,7 @@ body::-webkit-scrollbar {
 
 #DisplayRotationText {
   width: 100vw;
-  height: 7vw;
+  height: 6vh;
   color: #ffffff;
   font-size: 7vh;
 }
