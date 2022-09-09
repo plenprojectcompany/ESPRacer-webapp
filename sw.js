@@ -1,4 +1,4 @@
-const CACHE_VERSION = 'v7';
+const CACHE_VERSION = 'v8';
 const CACHE_NAME = `${registration.scope}!${CACHE_VERSION}`;
 
 // キャッシュするファイルをセットする
@@ -30,6 +30,7 @@ const urlsToCache = [
   'image/LightOff.png',
   'image/LightOn.png',
   'image/Loading.png',
+  'image/DisplayRotation.png',
   'image/Question.png',
   'image/Setting.png',
   'image/StartButton.png',

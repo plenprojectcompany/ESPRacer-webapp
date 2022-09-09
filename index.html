@@ -26,6 +26,12 @@
 				<div id='LoadingText'></div>
 			</div>
 		</div>
+		<div id='DisplayRotationLayer'>
+			<div id='DisplayRotationImage'>
+				<img src="image/DisplayRotation.png" id='DisplayRotationImageSource'>
+				<div id='DisplayRotationText'>ペアリングの際は<br>画面を縦向きにしてご利用ください</div>
+			</div>
+		</div>
 		<div id='NoSupportLayer'>
 			<div class="center" id='NoSupportContent'>
 				<div id='SupportList'>
@@ -89,7 +95,7 @@
 				</div>
 			</div>
 			<div id='TitleBottom'>
-				<div id='Varsion'>v.1.1.2 - © 2021 PLEN Project Company Inc.</div>
+				<div id='Varsion'>v.1.1.3 - © 2021 PLEN Project Company Inc.</div>
 			</div>
 		</div>
 		<div id='FullscreenArea'>
@@ -204,6 +210,7 @@
 <script defer>
 	//変数の定義
 	const Lloading = document.getElementById('LoadingLayer');
+	const Ldisplayrotation = document.getElementById('DisplayRotationLayer');
 	const LNoSupport = document.getElementById('NoSupportLayer');
 	const LNoSupportContent = document.getElementById('NoSupportContent');
 	const LTitle = document.getElementById('TitleLayer');
@@ -262,6 +269,7 @@
 	var LoadingSpeed = 0.5;
 	var LoadingAction;
 	var Fullscreen = false;
+	var DisplayRotationNotice = false
 
 	var PWMRange = 80;
 	var PWMMin = 20;
@@ -319,6 +327,19 @@
 		} else {
 			LNoSupport.style.height = '';
 		}
+
+		if(DisplayRotationNotice && stage == 0){
+			// Bluefyの場合、スマホ画面が横向きの際ペアリングできない
+			DisplayRotationNoticeShow()
+		}
+	}
+
+	function DisplayRotationNoticeShow(){
+		if(window.innerHeight > window.innerWidth){
+			Ldisplayrotation.style.display = 'none'
+		}else{
+			Ldisplayrotation.style.display = ''
+		}
 	}
 
 	//画面回転時の動作
@@ -330,6 +351,7 @@
 
 	//初期動作
 	window.onpageshow = function(e) {
+
 		//safariの場合リロードする
 		if (e.persisted) {
          window.location.reload();
@@ -364,6 +386,7 @@
 			//iphone
 			Support = false;
 			Device = 'ios';
+			DisplayRotationNotice = true;
 		} else if (userAgent.indexOf('ipad') != -1) {
 			//ipad
 			Support = false;
@@ -583,7 +606,13 @@
 			Lcontroller.style.display = 'none';
 			Lsetting.style.display = 'none';
 			LNoSupport.style.display = 'none';
+			Ldisplayrotation.style.display = 'none'
 			LTitle.style.display = '';
+
+			if(DisplayRotationNotice){
+				// Bluefyの場合、スマホ画面が横向きの際ペアリングできない
+				DisplayRotationNoticeShow()
+			}
 		} else {
 			//非対応ブラウザ
 			DisplayOut();
