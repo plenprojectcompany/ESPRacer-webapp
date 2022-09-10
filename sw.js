@@ -58,7 +58,11 @@ self.addEventListener('install', (event) => {
     caches.open(CACHE_NAME)
     .then((cache) => {
       // 指定されたファイルをキャッシュに追加する
-      return cache.addAll(urlsToCache.map(url => new Request(url, {credentials: 'same-origin'})));
+      try{
+        return cache.addAll(urlsToCache.map(url => new Request(url, {credentials: 'same-origin'})));
+      }catch{
+
+      }
     })
   );
 });
