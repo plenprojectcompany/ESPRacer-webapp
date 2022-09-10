@@ -1,10 +1,11 @@
-const CACHE_VERSION = 'v10';
+const CACHE_VERSION = 'v11';
 const CACHE_NAME = `${registration.scope}!${CACHE_VERSION}`;
 
 // キャッシュするファイルをセットする
 const urlsToCache = [
   '.',
   '.htaccess',
+  'camera-viewer.html',
   'command-standalone.html',
   'index.html',
   'data/server.py',
@@ -21,35 +22,29 @@ const urlsToCache = [
   'image/CommandStart.png',
   'image/CommandStop.png',
   'image/Controle.png',
+  'image/DisplayRotation.png',
   'image/Enter.png',
   'image/Error.png',
-  'image/FullscreenOff.png',
-  'image/FullscreenOn.png',
-  'image/GyroOff.png',
-  'image/GyroOn.png',
-  'image/LightOff.png',
-  'image/LightOn.png',
-  'image/Loading.png',
-  'image/DisplayRotation.png',
-  'image/Question.png',
-  'image/Setting.png',
-  'image/StartButton.png',
-  'image/TitleLogo.png',
-  'image/icon150.png',
+  'image/Fullscreen-Off.png',
+  'image/Fullscreen-On.png',
+  'image/Gyro-Off.png',
+  'image/Gyro-On.png',
   'image/icon16.png',
   'image/icon32.png',
   'image/icon48.png',
   'image/icon64.png',
-  'pdf/AndroidGuide.pdf',
-  'pdf/AndroidSetting.pdf',
-  'pdf/PCGuide.pdf',
-  'pdf/PCSetting.pdf',
-  'pdf/PermissionAndroidChrome.pdf',
-  'pdf/PermissionAndroidOpera.pdf',
-  'pdf/PermissionAndroidSamsungInternetBrowser.pdf',
-  'pdf/PermissionPCChrome.pdf',
-  'pdf/iosGuide.pdf',
-  'pdf/iosSetting.pdf'
+  'image/icon150.png',
+  'image/Light-Off.png',
+  'image/Light-On.png',
+  'image/Loading.png',
+  'image/Question.png',
+  'image/Setting.png',
+  'image/StartButton.png',
+  'image/TitleLogo.png',
+  'pdf/Mobile-Guide.pdf',
+  'pdf/Mobile-Setting.pdf',
+  'pdf/PC-Guide.pdf',
+  'pdf/PC-Setting.pdf'
 ];
 
 self.addEventListener('install', (event) => {
@@ -58,11 +53,7 @@ self.addEventListener('install', (event) => {
     caches.open(CACHE_NAME)
     .then((cache) => {
       // 指定されたファイルをキャッシュに追加する
-      try{
-        return cache.addAll(urlsToCache.map(url => new Request(url, {credentials: 'same-origin'})));
-      }catch{
-
-      }
+      return cache.addAll(urlsToCache.map(url => new Request(url, {credentials: 'same-origin'})));
     })
   );
 });
