@@ -1,0 +1,6 @@
+(sym_lib_table
+  (version 7)
+  (lib (name "DRV8835DSST")(type "KiCad")(uri "${KIPRJMOD}/../Footprint/DRV8835DSST/DRV8835DSST.kicad_sym")(options "")(descr ""))
+  (lib (name "SFV12R-2STE1LF")(type "KiCad")(uri "${KIPRJMOD}/../Footprint/SFV12R-2STE1LF/SFV12R-2STE1LF.kicad_sym")(options "")(descr ""))
+  (lib (name "XCL102D333CR-G")(type "KiCad")(uri "${KIPRJMOD}/../Footprint/XCL102D333CR-G/XCL102D333CR-G.kicad_sym")(options "")(descr ""))
+)
