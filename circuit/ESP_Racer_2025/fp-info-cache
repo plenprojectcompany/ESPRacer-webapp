@@ -1,4 +1,4 @@
-25604581751334948
+25604582113034653
 Audio_Module
 Reverb_BTDR-1H
 Digital Reverberation Unit, http://www.belton.co.kr/inc/downfile.php?seq=17&file=pdf (footprint from http://www.uk-electronic.de/PDF/BTDR-1.pdf)
@@ -66443,20 +66443,6 @@ THT
 0
 4
 2
-JST_ZH_B2B-ZR_1x02_P1.50mm_Vertical
-JST_ZH_B2B-ZR_1x02_P1.50mm_Vertical
-JST ZH series connector, B2B-ZR (http://www.jst-mfg.com/product/pdf/eng/eZH.pdf), generated with kicad-footprint-generator
-connector JST ZH vertical
-0
-2
-2
-JST_ZH_B3B-ZR_1x03_P1.50mm_Vertical
-JST_ZH_B3B-ZR_1x03_P1.50mm_Vertical
-JST ZH series connector, B3B-ZR (http://www.jst-mfg.com/product/pdf/eng/eZH.pdf), generated with kicad-footprint-generator
-connector JST ZH vertical
-0
-3
-3
 Jumper
 Jumper_Harwin_S1621_P10.9mm
 Harwin SMD jumper link, 12.3x2.3mm, 1.8mm height, 10.9mm pad pitch, https://cdn.harwin.com/pdfs/S1621R.pdf
@@ -68214,6 +68200,20 @@ module pcb
 0
 7
 7
+Molex
+Molex_PicoBlade_53047-0210_1x02_P1.25mm_Vertical
+Molex PicoBlade Connector System, 53047-0210, 2 Pins per row (http://www.molex.com/pdm_docs/sd/530470610_sd.pdf), generated with kicad-footprint-generator
+connector Molex PicoBlade vertical
+0
+2
+2
+Molex
+Molex_PicoBlade_53047-0310_1x03_P1.25mm_Vertical
+Molex PicoBlade Connector System, 53047-0310, 3 Pins per row (http://www.molex.com/pdm_docs/sd/530470610_sd.pdf), generated with kicad-footprint-generator
+connector Molex PicoBlade vertical
+0
+3
+3
 Motors
 Vybronics_VZ30C1T8219732L
 Vibration motor, 2.3-3.2V, 14000rpm, 0.7G, https://www.vybronics.com/wp-content/uploads/datasheet-files/Vybronics-VZ30C1T8219732L-datasheet.pdf
