@@ -7759,7 +7759,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "0.1μF"
+		(property "Value" "0.1u"
 			(at 124.46 146.685 0)
 			(effects
 				(font
