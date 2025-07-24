@@ -6494,7 +6494,7 @@
 				)
 			)
 		)
-		(property "Value" "330"
+		(property "Value" "300"
 			(at 245.11 89.154 90)
 			(effects
 				(font
@@ -8633,7 +8633,7 @@
 				)
 			)
 		)
-		(property "Value" "330"
+		(property "Value" "300"
 			(at 245.11 76.454 90)
 			(effects
 				(font
@@ -9577,7 +9577,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "0.1u"
+		(property "Value" "10u"
 			(at 118.11 80.0099 0)
 			(effects
 				(font
@@ -9777,7 +9777,7 @@
 				)
 			)
 		)
-		(property "Value" "330"
+		(property "Value" "1k"
 			(at 245.364 134.62 90)
 			(effects
 				(font

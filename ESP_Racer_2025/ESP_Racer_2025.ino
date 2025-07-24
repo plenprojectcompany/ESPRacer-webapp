@@ -9,18 +9,18 @@
 #define SERVICE_UUID        "389CAAF0-843F-4D3B-959D-C954CCE14655"
 #define GET_BATTERY_VOLTAGE "389CAAF1-843F-4D3B-959D-C954CCE14655"
 #define SET_MOTOR_PWM       "389CAAF2-843F-4D3B-959D-C954CCE14655"
-#define SET_PORT_OUT        "389CAAF3-843F-4D3B-959D-C954CCE14655"
+#define SET_PORT_OUT        "389CAAF3-843F-4D3B-959D-C954CCE14655"  
 #define SET_SERVO_POSITION  "389CAAF4-843F-4D3B-959D-C954CCE14655"
 #define BURST_COMMAND       "389CAAF5-843F-4D3B-959D-C954CCE14655"
 #define GET_FUNCTIONS       "389CAAFF-843F-4D3B-959D-C954CCE14655"
 
 /*========== I/O (Seeed Xiao ESP32-S3) ==========*/
-#define power_led  1
-#define servo_pin  2
-#define motor0_pin 3
-#define motor1_pin 4
-#define port0_led  5
-#define port1_led  6
+#define power_led  10
+#define servo_pin  6
+#define motor0_pin 1
+#define motor1_pin 3
+#define port0_led  4
+#define port1_led  5
 
 /*========== globals ==========*/
 BLECharacteristic *pCharacteristic1;
