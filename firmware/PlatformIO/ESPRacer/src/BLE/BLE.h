@@ -6,41 +6,33 @@
 #include <BLEUtils.h>
 #include <BLE2902.h>
 
+typedef std::function<void(const std::string&)> BLECallbackFunc;
+
+void bleSetUint16Value(BLECharacteristic* characteristic, uint16_t value);
+
 // Bluetooth LE Change Connect State
-class ServerCallbacks : public BLEServerCallbacks
-{
+class ServerCallbacks : public BLEServerCallbacks {
 public:
-    ServerCallbacks(bool debug);
+    explicit ServerCallbacks(bool debug = false);
+
     bool debugMode;
     bool deviceConnected = false;
-    virtual void onConnect(BLEServer *bleServer)
-    {
-        if (debugMode)
-            Serial.println("BLE Connected");
-        deviceConnected = true;
-    };
-    virtual void onDisconnect(BLEServer *bleServer)
-    {
-        if (debugMode)
-            Serial.println("BLE Disconnected");
-        deviceConnected = false;
-    }
+
+    void onConnect(BLEServer* bleServer) override;
+    void onDisconnect(BLEServer* bleServer) override;
 };
 
 // Bluetooth LE Recive
-class MyCallbacks : public BLECharacteristicCallbacks
-{
-    void onWrite(BLECharacteristic *pCharacteristic)
-    {
-        std::string rxValue = pCharacteristic->getValue();
-        if (rxValue.length() > 0)
-        {
-            String cmd = String(rxValue.c_str());
-            Serial.print("Received Value: ");
-            Serial.println(cmd);
-        }
-    }
+class CharacteristicCallbacks : public BLECharacteristicCallbacks {
+public:
+    CharacteristicCallbacks(BLECallbackFunc callback, bool debug = false);
+    void onWrite(BLECharacteristic *pCharacteristic) override;
+
+private:
+    bool debugMode;
+    BLECallbackFunc callbackFunc;
 };
+
 
 // Bluetooth LE initialize
 class BLE
@@ -51,22 +43,22 @@ public:
     bool *deviceConnected;
     const char *deviceName;
     const char *deviceId = "";
-    void setup(const char *ADVERTISING_UUID, const char *SERVICE_UUID, const char *CHARACTERISTIC_UUID_RX, const char *CHARACTERISTIC_UUID_TX);
-    bool isConnected();
+    const char *firmwareVersion = "";
+    const char *hardwareVersion = "";
+    const char *manufacturerName = "";
+    BLEServer *bleServer;
+    BLEService *bleService;
+    void addDeviceInformationService();
+    void setup(const char *ADVERTISING_UUID, const char *SERVICE_UUID);
+    BLECharacteristic *addCharacteristic(const char *characteristic_UUID, uint32_t properties);
+    void setCallback(BLECharacteristic* characteristic, BLECallbackFunc callback, bool debug = false);
     void startAdvertising();
+    bool isConnected();
     void notify(int data[], int datalen);
     void setBattery(int percent);
-    ServerCallbacks *callback;
-    BLECharacteristic *bleTxCharacteristic;
-    BLECharacteristic *bleRxCharacteristic;
-    BLECharacteristic *bleBatteryCharacteristic;
+    ServerCallbacks *serverCallback;
     const char *ADVERTISING_UUID;
     const char *SERVICE_UUID;
-    const char *CHARACTERISTIC_UUID_RX;
-    const char *CHARACTERISTIC_UUID_TX;
-
-    const char *SERVICE_UUID_BATTERY = "180f";
-    const char *CHARACTERISTIC_UUID_BATTERY = "2A19";
 
 private:
 };

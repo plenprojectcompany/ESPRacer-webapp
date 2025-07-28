@@ -2890,6 +2890,12 @@
 		(uuid "3f5b454c-8b57-40d3-bccf-c3f1d775a9b0")
 	)
 	(junction
+		(at 184.15 76.2)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "0124d2c0-9b5b-40ff-9b27-d6fee10f764d")
+	)
+	(junction
 		(at 93.98 80.01)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -3024,10 +3030,6 @@
 		(uuid "8ae8c102-aac7-44bd-8048-e0fd16dff99f")
 	)
 	(no_connect
-		(at 165.1 83.82)
-		(uuid "8b237093-a1e4-4dd7-aafd-c856c1248c0f")
-	)
-	(no_connect
 		(at 165.1 109.22)
 		(uuid "a2a47d89-62fa-4e3f-aa13-9cd43d41168a")
 	)
@@ -3082,6 +3084,16 @@
 			(type default)
 		)
 		(uuid "0d6bb7c2-5b8a-4940-8080-65f229afbf73")
+	)
+	(wire
+		(pts
+			(xy 184.15 76.2) (xy 184.15 78.74)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "11251de9-45f8-4dbe-9721-2f5ddc1f3cb8")
 	)
 	(wire
 		(pts
@@ -3262,6 +3274,16 @@
 			(type default)
 		)
 		(uuid "486e514f-e416-440b-9c89-709bfa98dc4b")
+	)
+	(wire
+		(pts
+			(xy 184.15 73.66) (xy 184.15 76.2)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "4914f79f-8d99-4074-9609-1119696751e8")
 	)
 	(wire
 		(pts
@@ -3695,6 +3717,16 @@
 	)
 	(wire
 		(pts
+			(xy 158.75 76.2) (xy 184.15 76.2)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d1e07fc5-89f3-4a08-908f-637c6da33b07")
+	)
+	(wire
+		(pts
 			(xy 96.52 82.55) (xy 96.52 87.63)
 		)
 		(stroke
@@ -3752,6 +3784,16 @@
 			(type default)
 		)
 		(uuid "e27afa80-e921-4258-bdc3-977ee2cf9389")
+	)
+	(wire
+		(pts
+			(xy 158.75 83.82) (xy 165.1 83.82)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "e5b927dd-d90a-4022-af52-6aeeee6b9f8a")
 	)
 	(wire
 		(pts
@@ -6339,6 +6381,73 @@
 		)
 	)
 	(symbol
+		(lib_id "Device:R")
+		(at 158.75 80.01 180)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "02afcd1d-66f0-499c-b6cb-972895016fc7")
+		(property "Reference" "R7"
+			(at 154.686 80.01 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "10k"
+			(at 156.464 80.01 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric_Pad0.98x0.95mm_HandSolder"
+			(at 160.528 80.01 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 158.75 80.01 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Resistor"
+			(at 158.75 80.01 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "2b8e47cf-92df-4f8d-b4cb-832f9c53b443")
+		)
+		(pin "2"
+			(uuid "5b737f4f-6fce-4d19-89a1-70a4a6309412")
+		)
+		(instances
+			(project "ESP_Racer_2025"
+				(path "/5c50a387-df5f-414d-8825-9a6969b82251"
+					(reference "R7")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "Device:C")
 		(at 130.81 38.1 0)
 		(unit 1)
@@ -7303,6 +7412,72 @@
 		)
 	)
 	(symbol
+		(lib_id "power:+BATT")
+		(at 245.11 102.87 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "330f47e5-f650-4ed3-9dc6-5c765d79185b")
+		(property "Reference" "#PWR020"
+			(at 245.11 106.68 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "+BATT"
+			(at 245.11 97.79 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 245.11 102.87 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 245.11 102.87 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"+BATT\""
+			(at 245.11 102.87 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "7f2d9efb-9f68-4a42-b6cc-56b0f732414b")
+		)
+		(instances
+			(project "ESP_Racer_2025"
+				(path "/5c50a387-df5f-414d-8825-9a6969b82251"
+					(reference "#PWR020")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "Connector:Conn_01x02_Socket")
 		(at 255.27 78.74 0)
 		(unit 1)
@@ -8209,72 +8384,6 @@
 			(project "ESP_Racer_2025"
 				(path "/5c50a387-df5f-414d-8825-9a6969b82251"
 					(reference "#PWR024")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "power:+3.3V")
-		(at 245.11 102.87 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "79301761-00bb-4326-8853-808b4b206604")
-		(property "Reference" "#PWR020"
-			(at 245.11 106.68 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "+3.3V"
-			(at 245.11 97.79 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 245.11 102.87 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 245.11 102.87 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Power symbol creates a global label with name \"+3.3V\""
-			(at 245.11 102.87 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "c31599c2-619d-42a3-9ed8-f412c237f64e")
-		)
-		(instances
-			(project "ESP_Racer_2025"
-				(path "/5c50a387-df5f-414d-8825-9a6969b82251"
-					(reference "#PWR020")
 					(unit 1)
 				)
 			)
@@ -9696,7 +9805,7 @@
 	)
 	(symbol
 		(lib_id "power:+3.3V")
-		(at 184.15 78.74 0)
+		(at 184.15 73.66 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -9705,7 +9814,7 @@
 		(fields_autoplaced yes)
 		(uuid "e0de1962-822a-4d7c-97a3-7b8bf47eb04e")
 		(property "Reference" "#PWR015"
-			(at 184.15 82.55 0)
+			(at 184.15 77.47 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9714,7 +9823,7 @@
 			)
 		)
 		(property "Value" "+3.3V"
-			(at 184.15 73.66 0)
+			(at 184.15 68.58 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9722,7 +9831,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 184.15 78.74 0)
+			(at 184.15 73.66 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9731,7 +9840,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 184.15 78.74 0)
+			(at 184.15 73.66 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9740,7 +9849,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"+3.3V\""
-			(at 184.15 78.74 0)
+			(at 184.15 73.66 0)
 			(effects
 				(font
 					(size 1.27 1.27)
