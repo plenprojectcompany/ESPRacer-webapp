@@ -77,6 +77,8 @@ int ledBlinkTime = 0;
 // bool port0_led = false;
 // bool port1_led = false;
 
+void HardwareReset();
+
 void SetupRacer()
 {
   pinMode(STATUS_LED_PIN, OUTPUT);
@@ -88,6 +90,7 @@ void SetupRacer()
   pinMode(BATT_VOL_PIN, INPUT);
 
   // pwmの設定 channel,周波数,解像度
+  ledcSetup(CHANNEL_STATUS_LED_PIN, 1000, 8);
   ledcSetup(CHANNEL_SERVO_PIN, SERVO_FREQUENCY, SERVO_RESOLUTION);
   ledcSetup(CHANNEL_MOTOR_A_PIN, 1000, 7);
   ledcSetup(CHANNEL_MOTOR_B_PIN, 1000, 7);
@@ -98,6 +101,8 @@ void SetupRacer()
   ledcAttachPin(MOTOR_B_PIN, CHANNEL_MOTOR_B_PIN);
 
   ledcWrite(CHANNEL_STATUS_LED_PIN, 255);
+
+  HardwareReset();
 }
 
 String GenerateID(int len)
