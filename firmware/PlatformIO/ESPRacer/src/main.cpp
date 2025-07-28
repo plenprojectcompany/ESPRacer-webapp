@@ -208,8 +208,8 @@ void setMotorPWM(unsigned char motorPower) {
 }
 
 void setPortOUT(unsigned char port_out) {
-  digitalWrite(PORT_0_PIN, (port_out & 0b00000001) ? HIGH : LOW);  // bit 0 → PORT_0
-  digitalWrite(PORT_1_PIN, (port_out & 0b00000010) ? HIGH : LOW);  // bit 1 → PORT_1
+  digitalWrite(PORT_0_PIN, (port_out & 0b0001) ? HIGH : LOW);  // bit 0 → PORT_0
+  digitalWrite(PORT_1_PIN, (port_out & 0b0010) ? HIGH : LOW);  // bit 1 → PORT_1
 }
 
 
