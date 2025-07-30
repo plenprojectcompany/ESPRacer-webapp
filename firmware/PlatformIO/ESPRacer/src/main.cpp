@@ -12,7 +12,7 @@
 #define debugMode true
 
 /*========== Version ==========*/
-#define FIRMWARE_VER "F1.00"
+#define FIRMWARE_VER "F1.01"
 #define HARDWARE_VER "H1.00"
 
 /*========== Class ==========*/
