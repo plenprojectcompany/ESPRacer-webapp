@@ -318,13 +318,13 @@ void BLEupdate()
   if (deviceConnectedFlag)
   {
     ledBlinkTime = 0;
-    ledcWrite(CHANNEL_STATUS_LED_PIN, 255);
+    LEDBlink(millis() - ledBlinkTime, 250, 0.5, 255, 0);
   }
   else
   {
     if (ledBlinkTime == 0)
       ledBlinkTime = millis();
-    LEDBlink(millis() - ledBlinkTime, 2000, 0.9, 255, 5);
+    LEDBlink(millis() - ledBlinkTime, 1000, 0.5, 255, 0);
   }
 }
 
