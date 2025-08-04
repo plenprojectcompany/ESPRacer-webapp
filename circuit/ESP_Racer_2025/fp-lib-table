@@ -6,4 +6,7 @@
   (lib (name "JST_ZH_B2B-ZR_1x02_P1.50mm_Vertical")(type "KiCad")(uri "${KIPRJMOD}/../Footprint/JST_ZH_B2B-ZR_1x02_P1.50mm_Vertical")(options "")(descr "")(disabled))
   (lib (name "JST_ZH_B3B-ZR_1x03_P1.50mm_Vertical")(type "KiCad")(uri "${KIPRJMOD}/../Footprint/JST_ZH_B3B-ZR_1x03_P1.50mm_Vertical")(options "")(descr "")(disabled))
   (lib (name "Molex")(type "KiCad")(uri "${KIPRJMOD}/../Footprint/Molex")(options "")(descr ""))
+  (lib (name "IRLML6402")(type "KiCad")(uri "${KIPRJMOD}/../Footprint/IRLML6402")(options "")(descr ""))
+  (lib (name "Original")(type "KiCad")(uri "${KIPRJMOD}/../Footprint/Original/Original.pretty")(options "")(descr ""))
+  (lib (name "Logo")(type "KiCad")(uri "${KIPRJMOD}/../Logo")(options "")(descr ""))
 )
