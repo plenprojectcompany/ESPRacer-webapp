@@ -12,8 +12,8 @@
 #define debugMode true
 
 /*========== Version ==========*/
-#define FIRMWARE_VER "F1.01"
-#define HARDWARE_VER "H1.00"
+#define FIRMWARE_VER "F1.02"
+#define HARDWARE_VER "H1.01"
 
 /*========== Class ==========*/
 Preferences pref;
@@ -25,10 +25,10 @@ Preferences pref;
 
 /*========== I/O (ESP32-C3) ==========*/
 #define STATUS_LED_PIN  10
-#define SERVO_PIN  4 // 6
+#define SERVO_PIN  6
 #define MOTOR_A_PIN 1
 #define MOTOR_B_PIN 3
-#define PORT_0_PIN  5 // 4
+#define PORT_0_PIN  4
 #define PORT_1_PIN  5 
 #define BATT_VOL_PIN  0
 
